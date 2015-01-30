@@ -18,11 +18,13 @@ namespace RN {
 	public class Comun : Socio {
 
         // los 
-		private static int diasRetiro;
+		private static int diasRetiro=3;
 
-		public Comun(){
+        public Comun(int ident, string c, string nom, string ape, string tel,int dni):base(ident,c,nom,ape,tel,dni)
+        {
 
 		}
+
 
 		~Comun(){
 
