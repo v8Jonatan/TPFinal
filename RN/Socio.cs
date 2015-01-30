@@ -23,7 +23,7 @@ namespace RN {
         private string telefono;
         // dni necesario para buscar al socio por si ya existe.
         private int dni;
-
+        
         public Socio(int ident, string c, string nom, string ape, string tel)
         {
             id = ident;

@@ -14,9 +14,7 @@ namespace RN
         //Caso de Uso 1 Agregar Socio
         private Socio buscarDni(int dni)
         {
-           
             return socios.Find(x => x.Dni==dni);
-
         }
         
         /*El metodo toma los datos por parametro
