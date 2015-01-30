@@ -1,0 +1,7 @@
+C:\Users\jonatan\Documents\GitHubDebug\UI.exe
+C:\Users\jonatan\Documents\GitHubDebug\UI.pdb
+C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
+C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.Properties.Resources.resources
+C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.csproj.GenerateResource.Cache
+C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.exe
+C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.pdb

@@ -16,13 +16,27 @@ using System.IO;
 namespace RN {
 	public abstract class Socio {
 
-		private string correo;
-		private string Nombre;
-		private int Numero;
+        private int id;
+        private string correo;
+		private string nombre;
+        private string apellido;
+        private string telefono;
+        // dni necesario para buscar al socio por si ya existe.
+        private int dni;
 
-		public Socio(){
+        public Socio(int ident, string c, string nom, string ape, string tel)
+        {
+            id = ident;
+            correo = c;
+            nombre = nom;
+            apellido = ape;
+            telefono = tel;
 
 		}
+        public int Dni
+        {
+            get { return dni; }
+        }
 
 		~Socio(){
 
