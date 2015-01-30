@@ -8,6 +8,7 @@ namespace RN
     public class Biblioteca
     {
         private List<Socio> socios;
+        private List<Libro> libros;
 
         //Caso de Uso 1 Agregar Socio
         private Socio buscarDni(int dni)
