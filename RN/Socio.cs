@@ -24,7 +24,7 @@ namespace RN {
         private int dni;
 
         
-        public Socio(int ident, string c, string nom, string ape, string tel)
+        
 
         public Socio(int ident, string c, string nom, string ape, string tel, int dni)
         {
