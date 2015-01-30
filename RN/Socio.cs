@@ -21,17 +21,19 @@ namespace RN {
 		private string nombre;
         private string apellido;
         private string telefono;
-        // dni necesario para buscar al socio por si ya existe.
         private int dni;
+
         
         public Socio(int ident, string c, string nom, string ape, string tel)
+
+        public Socio(int ident, string c, string nom, string ape, string tel, int dni)
         {
             id = ident;
             correo = c;
             nombre = nom;
             apellido = ape;
             telefono = tel;
-
+            this.dni = dni;
 		}
         public int Dni
         {
