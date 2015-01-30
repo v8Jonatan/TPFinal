@@ -9,6 +9,7 @@ namespace RN
     {
         private List<Socio> socios;
         private List<Libro> libros;
+        private List<Socio> pendientes;
 
         //Caso de Uso 1 Agregar Socio
         private Socio buscarDni(int dni)

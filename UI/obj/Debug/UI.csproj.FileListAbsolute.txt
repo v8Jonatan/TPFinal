@@ -5,3 +5,5 @@ C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.Properties.Resources.r
 C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.exe
 C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.pdb
+D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.exe
+D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.pdb
