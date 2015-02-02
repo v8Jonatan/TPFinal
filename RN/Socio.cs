@@ -20,13 +20,13 @@ namespace RN {
         private string correo;
 		private string nombre;
         private string apellido;
-        private string telefono;
+        private int telefono;
         private int dni;
 
         
         
 
-        public Socio(int ident, string c, string nom, string ape, string tel, int dni)
+        public Socio(int ident, string c, string nom, string ape, int tel, int dni)
         {
             id = ident;
             correo = c;

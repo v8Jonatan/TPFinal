@@ -9,7 +9,7 @@ namespace RN
     {
         private static int diasRetiro =5;
 
-        public Especial(int ident, string c, string nom, string ape, string tel, int dni):base(ident, c, nom, ape, tel, dni)
+        public Especial(int ident, string c, string nom, string ape, int tel, int dni):base(ident, c, nom, ape, tel, dni)
         {
             
 		}
