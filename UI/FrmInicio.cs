@@ -17,15 +17,35 @@ namespace UI
             InitializeComponent();
             biblioteca = new Biblioteca();
         }
-
+        
         private void agregarSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmSocios fr = new FrmSocios();
-            fr.ShowDialog();
-            if (fr.NuevoSocio != null)
+            try
             {
-                biblioteca.agregarSocio()
+
+                FrmSocios fr = new FrmSocios();
+                fr.ShowDialog();
+                if (fr.NuevoSocio != null)
+                {
+                    biblioteca.agregarSocio(fr.NuevoSocio);
+
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            // buscar de prueba para ver si lo agregaba bien colo funciona con dni
+            Socio s=biblioteca.buscarDni(int.Parse(txtDni.Text));
+            if (s != null)
+                txtNroSocio.Text = s.Id.ToString();
+            else
+                MessageBox.Show(this, "Socio no existe");
+           
         }
     }
 }

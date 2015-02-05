@@ -24,6 +24,10 @@ namespace RN {
         {
 
 		}
+        public override string getTipo()
+        {
+            return "COMUN"; 
+        }
 
 
 		~Comun(){

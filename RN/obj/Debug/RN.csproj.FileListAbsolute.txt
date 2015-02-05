@@ -1,0 +1,7 @@
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\RN.dll
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\RN.pdb
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\Datos.dll
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\Datos.pdb
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\obj\Debug\RN.csprojResolveAssemblyReference.cache
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\obj\Debug\RN.dll
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\obj\Debug\RN.pdb

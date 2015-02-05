@@ -8,3 +8,4 @@ C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.pdb
 D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.exe
 D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.pdb
 C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.FrmInicio.resources
+C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.FrmSocios.resources

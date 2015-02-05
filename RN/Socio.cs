@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Data;
 
 
 
@@ -34,12 +35,35 @@ namespace RN {
             apellido = ape;
             telefono = tel;
             this.dni = dni;
-		}
+        }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public int Dni
         {
             get { return dni; }
         }
-
+        public string Correo
+        {
+            get { return correo; }
+        }
+        public string Nombres
+        {
+            get { return nombre; }
+        }
+        public string Apellido
+        {
+            get { return apellido; }
+        }
+      
+        public int Telefono
+        {
+            get { return telefono; }
+        }
+        public abstract string getTipo();
+        
 		~Socio(){
 
 		}

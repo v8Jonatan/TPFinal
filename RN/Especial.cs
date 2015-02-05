@@ -13,6 +13,10 @@ namespace RN
         {
             
 		}
+        public override string getTipo()
+        {
+            return "ESPECIAL";
+        }
 
     }
 }

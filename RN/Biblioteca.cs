@@ -18,7 +18,7 @@ namespace RN
             libros = new List<Libro>();
         }
         //Caso de Uso 1 Agregar Socio
-        private Socio buscarDni(int dni)
+        public  Socio buscarDni(int dni)
         {
             return socios.Find(x => x.Dni==dni);
         }
@@ -27,17 +27,20 @@ namespace RN
          * Buscamos al socio por dni primero para ver si ya existe despues lo agregamos a la 
          * base de datos y recuperamos el mismo como objeto para traer el idSocio (que es autonumerico)
          */
-        public void agregarSocio(Socio nuevoSocio)
+        public void agregarSocio(Socio ns)
         {
-            Socio socioAntiguo = socios.Find(x => x.Dni == nuevoSocio.Dni);
-            if (socioAntiguo != null)
+            //busca el socio podemos hacer una funcion para recorrer el list
+            Socio socioAntiguo = socios.Find(x => x.Dni == ns.Dni);
+            if (socioAntiguo == null)
             {
-               // Datos.altaSocio();  los datos del socio  
-
+                // este metodo se podria mejorar capaz haciendo dos metodos distintos por que 
+                // asi como esta hace el insert y tambien asigna el id que recupera de la base de datos 
+                ns.Id = Datos.Datos.altaSocio(ns.Nombres, ns.Apellido, ns.Correo, ns.Telefono, ns.Dni, ns.getTipo());
+                socios.Add(ns);
             }
             else
             {
-
+                throw new Exception("El socio ya existe");
             }
 
             

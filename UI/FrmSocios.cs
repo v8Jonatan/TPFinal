@@ -33,6 +33,7 @@ namespace UI
             {
                 nuevoSocio = new Especial(0, correo, noms, ape, tele, dni);
             }
+            this.Close();
 
         }
         public Socio NuevoSocio
