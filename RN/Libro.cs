@@ -16,17 +16,54 @@ using System.IO;
 
 namespace RN {
 	public class Libro {
+        private int codigo;
+        private string autor;
         private string titulo;
-		private string autor;
-		private int codigo;
-		private string isbn;
-        private string tema;
+        private string genero;
+        private string isbn;
+        private List<Ejemplar> ejemplares;
 
-		public Libro(){
+		public Libro(int cod, string a, string t, string g, string isbn)
+        {
+            codigo = cod;
+            autor = a;
+            titulo = t;
+            genero = g;
+            this.isbn = isbn;
+            ejemplares = new List<Ejemplar>();
+        }
 
-          
+        public int Codigo
+        {
+            get { return codigo; }
+            set { codigo = value; }
+        }
+        public string Autor
+        {
+            get { return autor; }
+            set { autor = value; }
+        }
+        public string Titulo
+        {
+            get { return titulo; }
+            set { titulo = value; }
+        }
+        public string Genero
+        {
+            get { return genero; }
+            set { genero = value; }
+        }
+        public string Isbn
+        {
+            get { return isbn; }
+            set { isbn = value; }
+        }
+        public List<Ejemplar> Ejemplares
+        {
+            get { return ejemplares; }
+            set { ejemplares = value; }
+        }
 
-		}
 
 		~Libro(){
 

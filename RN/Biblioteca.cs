@@ -9,14 +9,45 @@ namespace RN
     {
         private List<Socio> socios;
         private List<Libro> libros;
-
+        private List<Reserva> reservas;
+        private List<Prestamo> prestamos;
+        private List<Autor> autores;
 
 
         public Biblioteca()
         {
             socios = new List<Socio>();
             libros = new List<Libro>();
+            reservas = new List<Reserva>();
+            prestamos = new List<Prestamo>();
+            autores = new List<Autor>();
         }
+        public List<Socio> Socios
+        {
+            get { return socios; }
+            set { socios = value; }
+        }
+        public List<Libro> Libros
+        {
+            get { return libros; }
+            set { libros = value; }
+        }
+        public List<Reserva> Reservas
+        {
+            get { return reservas; }
+            set { reservas = value; }
+        }
+        public List<Prestamo> Prestamos
+        {
+            get { return prestamos; }
+            set { prestamos = value; }
+        }
+        public List<Autor> Autores
+        {
+            get { return autores; }
+            set { autores = value; }
+        }
+
         //Caso de Uso 1 Agregar Socio
         public  Socio buscarDni(int dni)
         {
@@ -44,6 +75,12 @@ namespace RN
             }
 
             
+        }
+        
+        public Biblioteca cargarse()
+        {
+            Biblioteca biblioteca = new Biblioteca();
+
         }
     }
 }

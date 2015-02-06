@@ -19,8 +19,15 @@ namespace Datos
             //string strcon="server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
             string strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
             MySqlConnection con= new MySqlConnection(strcon);
-            
-            con.Open();
+
+            try
+            {
+                con.Open();
+            }
+            catch (MySqlException ex)
+            {
+                string error = ex.Message;
+            }
             MySqlCommand cmd= new MySqlCommand();
             cmd.CommandText = "altaSocio"; // el nombre del proceso almacenado
             cmd.Connection = con;

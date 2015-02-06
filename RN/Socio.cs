@@ -5,7 +5,7 @@
 //  Created on:      30-nov-2014 06:37:04 p.m.
 //  Original author: jonatan
 ///////////////////////////////////////////////////////////
-
+//Este es 
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,9 +23,6 @@ namespace RN {
         private string apellido;
         private int telefono;
         private int dni;
-
-        
-        
 
         public Socio(int ident, string c, string nom, string ape, int tel, int dni)
         {
