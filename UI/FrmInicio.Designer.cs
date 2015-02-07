@@ -84,7 +84,7 @@
             // agregarSocioToolStripMenuItem
             // 
             this.agregarSocioToolStripMenuItem.Name = "agregarSocioToolStripMenuItem";
-            this.agregarSocioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.agregarSocioToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.agregarSocioToolStripMenuItem.Text = "Agregar Socio";
             this.agregarSocioToolStripMenuItem.Click += new System.EventHandler(this.agregarSocioToolStripMenuItem_Click);
             // 
@@ -305,6 +305,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmInicio";
             this.Text = "Biblioteca";
+            this.Load += new System.EventHandler(this.FrmInicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridDatos)).EndInit();

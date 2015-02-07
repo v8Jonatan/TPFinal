@@ -136,6 +136,7 @@
             // radiobtnComun
             // 
             this.radiobtnComun.AutoSize = true;
+            this.radiobtnComun.Checked = true;
             this.radiobtnComun.Location = new System.Drawing.Point(41, 257);
             this.radiobtnComun.Name = "radiobtnComun";
             this.radiobtnComun.Size = new System.Drawing.Size(58, 17);
@@ -151,7 +152,6 @@
             this.radiobtnEspecial.Name = "radiobtnEspecial";
             this.radiobtnEspecial.Size = new System.Drawing.Size(65, 17);
             this.radiobtnEspecial.TabIndex = 14;
-            this.radiobtnEspecial.TabStop = true;
             this.radiobtnEspecial.Text = "Especial";
             this.radiobtnEspecial.UseVisualStyleBackColor = true;
             // 

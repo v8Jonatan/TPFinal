@@ -47,5 +47,10 @@ namespace UI
                 MessageBox.Show(this, "Socio no existe");
            
         }
+
+        private void FrmInicio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

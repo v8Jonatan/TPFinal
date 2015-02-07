@@ -3,3 +3,8 @@ C:\Users\jonatan\Documents\GitHub\TPFinal\Datos\bin\Debug\Datos.pdb
 C:\Users\jonatan\Documents\GitHub\TPFinal\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
 C:\Users\jonatan\Documents\GitHub\TPFinal\Datos\obj\Debug\Datos.dll
 C:\Users\jonatan\Documents\GitHub\TPFinal\Datos\obj\Debug\Datos.pdb
+D:\Personal\Mis documentos\GitHub\TPFinal\Datos\bin\Debug\Datos.dll
+D:\Personal\Mis documentos\GitHub\TPFinal\Datos\bin\Debug\Datos.pdb
+D:\Personal\Mis documentos\GitHub\TPFinal\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+D:\Personal\Mis documentos\GitHub\TPFinal\Datos\obj\Debug\Datos.dll
+D:\Personal\Mis documentos\GitHub\TPFinal\Datos\obj\Debug\Datos.pdb

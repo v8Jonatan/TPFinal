@@ -5,3 +5,10 @@ C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\Datos.pdb
 C:\Users\jonatan\Documents\GitHub\TPFinal\RN\obj\Debug\RN.csprojResolveAssemblyReference.cache
 C:\Users\jonatan\Documents\GitHub\TPFinal\RN\obj\Debug\RN.dll
 C:\Users\jonatan\Documents\GitHub\TPFinal\RN\obj\Debug\RN.pdb
+D:\Personal\Mis documentos\GitHub\TPFinal\RN\obj\Debug\RN.csprojResolveAssemblyReference.cache
+D:\Personal\Mis documentos\GitHub\TPFinal\RN\obj\Debug\RN.dll
+D:\Personal\Mis documentos\GitHub\TPFinal\RN\bin\Debug\RN.dll
+D:\Personal\Mis documentos\GitHub\TPFinal\RN\bin\Debug\RN.pdb
+D:\Personal\Mis documentos\GitHub\TPFinal\RN\bin\Debug\Datos.dll
+D:\Personal\Mis documentos\GitHub\TPFinal\RN\bin\Debug\Datos.pdb
+D:\Personal\Mis documentos\GitHub\TPFinal\RN\obj\Debug\RN.pdb

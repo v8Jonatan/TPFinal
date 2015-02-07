@@ -65,9 +65,13 @@ namespace RN
             if (socioAntiguo == null)
             {
                 // este metodo se podria mejorar capaz haciendo dos metodos distintos por que 
-                // asi como esta hace el insert y tambien asigna el id que recupera de la base de datos 
-                ns.Id = Datos.Datos.altaSocio(ns.Nombres, ns.Apellido, ns.Correo, ns.Telefono, ns.Dni, ns.getTipo());
-                socios.Add(ns);
+                // asi como esta hace el insert y tambien asigna el id que recupera de la base de datos
+ 
+                //(Sebas) Me parece que está perfecto así, ya que usamos funciones diferentes por cada caso de uso. A menos que necesitemos reutilizar, sino no.
+                Datos.Datos d = new Datos.Datos(); 
+                ns.Id = d.altaSocio(ns.Nombres, ns.Apellido, ns.Correo, ns.Telefono, ns.Dni, ns.getTipo());
+                if(ns.Id!=0) //borrar este condicional una vez hecha exception en clase datos
+                    socios.Add(ns);
             }
             else
             {
@@ -77,10 +81,10 @@ namespace RN
             
         }
         
-        public Biblioteca cargarse()
+        /*public Biblioteca cargarse()
         {
             Biblioteca biblioteca = new Biblioteca();
 
-        }
+        }*/
     }
 }
