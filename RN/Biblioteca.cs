@@ -90,39 +90,15 @@ namespace RN
         {
             Biblioteca biblioteca = new Biblioteca();
             Datos.Datos d = new Datos.Datos();
-            biblioteca.recuperarSocios(d.cargarSocios());
-            biblioteca.recuperarLibros(d.cargarLibros());
-            biblioteca.recuperarReservas(d.cargarReservas());
-            biblioteca.recuperarPrestamos(d.cargarPrestamos());
-            biblioteca.recuperarAutores(d.cargarAutores());
-
+            /*
+            biblioteca.Socios = d.cargarSocios();
+            biblioteca.Libros = d.cargarLibros();
+            biblioteca.Reservas = d.cargarReservas();
+            biblioteca.Prestamos = d.cargarPrestamos();
+            biblioteca.Autores = d.cargarAutores();
+            */
             return biblioteca;
         }
-          
-          
-        public void recuperarSocios()
-        {
-
-        }
-
-        public void recuperarLibros()
-        {
-
-        }
-
-        public void recuperarReservas()
-        {
-
-        }
-
-        public void recuperarPrestamos()
-        {
-
-        }
-
-        public void recuperarAutores()
-        {
-
-        }
+         
     }
 }

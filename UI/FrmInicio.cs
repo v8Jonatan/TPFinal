@@ -77,7 +77,7 @@ namespace UI
 
         private void FrmInicio_Load(object sender, EventArgs e)
         {
-            bilbioteca = biblioteca.recuperarse();
+            biblioteca = biblioteca.recuperarse();
         }
 
         private void txtDni_TextChanged(object sender, EventArgs e)

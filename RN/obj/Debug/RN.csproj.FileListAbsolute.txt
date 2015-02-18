@@ -12,3 +12,14 @@ D:\Personal\Mis documentos\GitHub\TPFinal\RN\bin\Debug\RN.pdb
 D:\Personal\Mis documentos\GitHub\TPFinal\RN\bin\Debug\Datos.dll
 D:\Personal\Mis documentos\GitHub\TPFinal\RN\bin\Debug\Datos.pdb
 D:\Personal\Mis documentos\GitHub\TPFinal\RN\obj\Debug\RN.pdb
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\RN.dll
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\RN.pdb
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\Datos.dll
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\DbLinq.dll
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\DbLinq.MySql.dll
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\Datos.pdb
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\DbLinq.pdb
+D:\Personal\Escritorio\TPFinal\RN\bin\Debug\DbLinq.MySql.pdb
+D:\Personal\Escritorio\TPFinal\RN\obj\Debug\RN.csprojResolveAssemblyReference.cache
+D:\Personal\Escritorio\TPFinal\RN\obj\Debug\RN.dll
+D:\Personal\Escritorio\TPFinal\RN\obj\Debug\RN.pdb

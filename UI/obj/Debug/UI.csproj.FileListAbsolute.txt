@@ -16,3 +16,12 @@ D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.FrmSocios.resources
 D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.Properties.Resources.resources
 D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
+D:\Personal\Escritorio\TPFinal\UI\obj\Debug\UI.exe
+D:\Personal\Escritorio\TPFinal\UI\obj\Debug\UI.pdb
+D:\Personal\Escritorio\TPFinal\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
+D:\Personal\Escritorio\TPFinal\UI\obj\Debug\UI.FrmInicio.resources
+D:\Personal\Escritorio\TPFinal\UI\obj\Debug\UI.FrmSocios.resources
+D:\Personal\Escritorio\TPFinal\UI\obj\Debug\UI.Properties.Resources.resources
+D:\Personal\Escritorio\TPFinal\UI\obj\Debug\UI.csproj.GenerateResource.Cache
+D:\Personal\GitHubDebug\UI.exe
+D:\Personal\GitHubDebug\UI.pdb

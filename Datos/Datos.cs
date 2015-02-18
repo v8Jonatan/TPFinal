@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+
 namespace Datos
 {
     public class Datos
@@ -16,9 +17,17 @@ namespace Datos
 
         public Datos()
         {
+            //Conexion para mysql con stored procedures
             strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
             //string strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
             con = new MySqlConnection(strcon);
+
+            //Conexion para linq
+            string dbServer = Environment.GetEnvironmentVariable("DbLinqServer") ?? "umsebastianbd.ddns.net";
+            // BUG: El contexto debe ser desechable
+            string connStr = String.Format("server={0};user id={1}; password={2}; database={3}"
+                , dbServer, "SebastianF", "thiago1311", "biblioteca");
+            BibLiOtEcA db = new BibLiOtEcA(new MySqlConnection(connStr));
         }
 
         private bool openConnection()
@@ -89,29 +98,51 @@ namespace Datos
                 return 0;   //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
         }
 
-        public void cargarSocios()
+        public List<Object> cargarSocios()
         {
+            /*Acá no sé como usar el list<>´porque no me funciona
+             * castear la lista tipo object. Igualmente una solucion
+             * seria usar Arraylist como vimos en clase. Pero es dificil 
+             * hacerlo asi que iba a preguntarte como era la forma que
+             * usaste vos en tu programa
+             */
 
+            List<Object> socios = new List<Object>();
+            //Vale por codigo linq para rescatar los socios de la bd
+
+            return socios;
         }
 
-        public void cargarLibros()
+        public List<Object> cargarLibros()
         {
+            List<Object> libros = new List<Object>();
+            //Vale por codigo linq para rescatar los libros de la bd
 
+            return libros;
         }
-        
-        public void cargarReservas()
-        {
 
+        public List<Object> cargarReservas()
+        {
+            List<Object> reservas = new List<Object>();
+            //Vale por codigo linq para rescatar los reservas de la bd
+
+            return reservas;
         }
-        
-        public void cargarPrestamos()
-        {
 
+        public List<Object> cargarPrestamos()
+        {
+            List<Object> prestamos = new List<Object>();
+            //Vale por codigo linq para rescatar los prestamos de la bd
+
+            return prestamos;
         }
-            
-        public void cargarAutores()
-        {
 
+        public List<Object> cargarAutores()
+        {
+            List<Object> autores = new List<Object>();
+            //Vale por codigo linq para rescatar los autores de la bd
+
+            return autores;
         }
 
     }

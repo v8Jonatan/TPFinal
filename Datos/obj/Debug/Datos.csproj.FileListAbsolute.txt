@@ -8,3 +8,12 @@ D:\Personal\Mis documentos\GitHub\TPFinal\Datos\bin\Debug\Datos.pdb
 D:\Personal\Mis documentos\GitHub\TPFinal\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
 D:\Personal\Mis documentos\GitHub\TPFinal\Datos\obj\Debug\Datos.dll
 D:\Personal\Mis documentos\GitHub\TPFinal\Datos\obj\Debug\Datos.pdb
+D:\Personal\Escritorio\TPFinal\Datos\bin\Debug\Datos.dll
+D:\Personal\Escritorio\TPFinal\Datos\bin\Debug\Datos.pdb
+D:\Personal\Escritorio\TPFinal\Datos\bin\Debug\DbLinq.dll
+D:\Personal\Escritorio\TPFinal\Datos\bin\Debug\DbLinq.MySql.dll
+D:\Personal\Escritorio\TPFinal\Datos\bin\Debug\DbLinq.pdb
+D:\Personal\Escritorio\TPFinal\Datos\bin\Debug\DbLinq.MySql.pdb
+D:\Personal\Escritorio\TPFinal\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+D:\Personal\Escritorio\TPFinal\Datos\obj\Debug\Datos.dll
+D:\Personal\Escritorio\TPFinal\Datos\obj\Debug\Datos.pdb
