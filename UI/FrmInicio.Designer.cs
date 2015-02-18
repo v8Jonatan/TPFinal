@@ -98,9 +98,11 @@
             // 
             // verReservasToolStripMenuItem
             // 
+            this.verReservasToolStripMenuItem.Enabled = false;
             this.verReservasToolStripMenuItem.Name = "verReservasToolStripMenuItem";
-            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.verReservasToolStripMenuItem.Text = "Ver Reservas";
+            this.verReservasToolStripMenuItem.Click += new System.EventHandler(this.verReservasToolStripMenuItem_Click);
             // 
             // prestamoToolStripMenuItem
             // 
@@ -114,21 +116,27 @@
             // 
             // verPrestamosToolStripMenuItem
             // 
+            this.verPrestamosToolStripMenuItem.Enabled = false;
             this.verPrestamosToolStripMenuItem.Name = "verPrestamosToolStripMenuItem";
             this.verPrestamosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.verPrestamosToolStripMenuItem.Text = "Ver Prestamos";
+            this.verPrestamosToolStripMenuItem.Click += new System.EventHandler(this.verPrestamosToolStripMenuItem_Click);
             // 
             // devolverToolStripMenuItem
             // 
+            this.devolverToolStripMenuItem.Enabled = false;
             this.devolverToolStripMenuItem.Name = "devolverToolStripMenuItem";
             this.devolverToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.devolverToolStripMenuItem.Text = "Devolver";
+            this.devolverToolStripMenuItem.Click += new System.EventHandler(this.devolverToolStripMenuItem_Click);
             // 
             // realizarPrestamoToolStripMenuItem
             // 
+            this.realizarPrestamoToolStripMenuItem.Enabled = false;
             this.realizarPrestamoToolStripMenuItem.Name = "realizarPrestamoToolStripMenuItem";
             this.realizarPrestamoToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.realizarPrestamoToolStripMenuItem.Text = "Realizar Prestamo";
+            this.realizarPrestamoToolStripMenuItem.Click += new System.EventHandler(this.realizarPrestamoToolStripMenuItem_Click);
             // 
             // catalogoToolStripMenuItem
             // 
@@ -157,6 +165,7 @@
             this.buscarLibrosToolStripMenuItem.Name = "buscarLibrosToolStripMenuItem";
             this.buscarLibrosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.buscarLibrosToolStripMenuItem.Text = "Buscar Libros";
+            this.buscarLibrosToolStripMenuItem.Click += new System.EventHandler(this.buscarLibrosToolStripMenuItem_Click);
             // 
             // lblDni
             // 
@@ -173,6 +182,7 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(118, 20);
             this.txtDni.TabIndex = 2;
+            this.txtDni.TextChanged += new System.EventHandler(this.txtDni_TextChanged);
             // 
             // btnBuscar
             // 
@@ -190,6 +200,7 @@
             this.txtNroSocio.Name = "txtNroSocio";
             this.txtNroSocio.Size = new System.Drawing.Size(118, 20);
             this.txtNroSocio.TabIndex = 4;
+            this.txtNroSocio.TextChanged += new System.EventHandler(this.txtNroSocio_TextChanged);
             // 
             // lblNroSocio
             // 
@@ -216,6 +227,7 @@
             this.lblNombre.Size = new System.Drawing.Size(81, 13);
             this.lblNombre.TabIndex = 8;
             this.lblNombre.Text = "NombreApellido";
+            this.lblNombre.Visible = false;
             // 
             // btnDetalleSocio
             // 
@@ -225,6 +237,7 @@
             this.btnDetalleSocio.TabIndex = 9;
             this.btnDetalleSocio.Text = "Detalles";
             this.btnDetalleSocio.UseVisualStyleBackColor = true;
+            this.btnDetalleSocio.Visible = false;
             // 
             // panel1
             // 
@@ -237,6 +250,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(241, 150);
             this.panel1.TabIndex = 10;
+            this.panel1.Visible = false;
             // 
             // radioBtnIsbn
             // 

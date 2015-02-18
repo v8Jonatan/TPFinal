@@ -34,6 +34,7 @@ namespace Datos
                 return false;
             }
         }
+
         private bool closeConnection()
         {
             try
@@ -60,7 +61,7 @@ namespace Datos
                 // parametro de salida 
                 MySqlParameter idSocio = new MySqlParameter("paramId", MySqlDbType.Int32);
                 idSocio.Direction = ParameterDirection.Output;
-                idSocio.Value = 0;
+                idSocio.Value = 0;  
                 cmd.Parameters.Add(idSocio);
 
                 //parametros del insert se crea cada uno y se lo agrega al mysqlcommand cmd
@@ -87,6 +88,32 @@ namespace Datos
             else
                 return 0;   //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
         }
+
+        public void cargarSocios()
+        {
+
+        }
+
+        public void cargarLibros()
+        {
+
+        }
+        
+        public void cargarReservas()
+        {
+
+        }
+        
+        public void cargarPrestamos()
+        {
+
+        }
+            
+        public void cargarAutores()
+        {
+
+        }
+
     }
 
     

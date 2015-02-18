@@ -54,10 +54,15 @@ namespace RN
             return socios.Find(x => x.Dni==dni);
         }
         
+        public Socio buscarNroSocio(int nroSocio)
+        {
+            return socios.Find(x => x.Id == nroSocio);
+        }
+
         /*El metodo toma los datos por parametro
-         * Buscamos al socio por dni primero para ver si ya existe despues lo agregamos a la 
-         * base de datos y recuperamos el mismo como objeto para traer el idSocio (que es autonumerico)
-         */
+        * Buscamos al socio por dni primero para ver si ya existe despues lo agregamos a la 
+        * base de datos y recuperamos el mismo como objeto para traer el idSocio (que es autonumerico)
+        */
         public void agregarSocio(Socio ns)
         {
             //busca el socio podemos hacer una funcion para recorrer el list
@@ -81,10 +86,43 @@ namespace RN
             
         }
         
-        /*public Biblioteca cargarse()
+        public Biblioteca recuperarse()
         {
             Biblioteca biblioteca = new Biblioteca();
+            Datos.Datos d = new Datos.Datos();
+            biblioteca.recuperarSocios(d.cargarSocios());
+            biblioteca.recuperarLibros(d.cargarLibros());
+            biblioteca.recuperarReservas(d.cargarReservas());
+            biblioteca.recuperarPrestamos(d.cargarPrestamos());
+            biblioteca.recuperarAutores(d.cargarAutores());
 
-        }*/
+            return biblioteca;
+        }
+          
+          
+        public void recuperarSocios()
+        {
+
+        }
+
+        public void recuperarLibros()
+        {
+
+        }
+
+        public void recuperarReservas()
+        {
+
+        }
+
+        public void recuperarPrestamos()
+        {
+
+        }
+
+        public void recuperarAutores()
+        {
+
+        }
     }
 }

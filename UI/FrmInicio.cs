@@ -28,7 +28,6 @@ namespace UI
                 if (fr.NuevoSocio != null)
                 {
                     biblioteca.agregarSocio(fr.NuevoSocio);
-
                 }
             }
             catch(Exception ex)
@@ -39,18 +38,81 @@ namespace UI
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            // buscar de prueba para ver si lo agregaba bien colo funciona con dni
-            Socio s=biblioteca.buscarDni(int.Parse(txtDni.Text));
-            if (s != null)
-                txtNroSocio.Text = s.Id.ToString();
+            Socio s;
+            if (!txtDni.Text.Trim().Equals(""))                     //Revisa el textbox en el que va a hacer la búsqueda
+            {
+                s = biblioteca.buscarDni(int.Parse(txtDni.Text));
+                if (s != null){
+                    txtNroSocio.Text = s.Id.ToString();
+                    mostrarBusqueda(s);
+                }       
+                else
+                    MessageBox.Show(this, "Socio no existe");
+            }
             else
-                MessageBox.Show(this, "Socio no existe");
-           
+            {
+                s = biblioteca.buscarNroSocio(int.Parse(txtNroSocio.Text));
+                if (s != null){
+                    txtNroSocio.Text = s.Dni.ToString();
+                    mostrarBusqueda(s);
+                }
+                else
+                    MessageBox.Show(this, "Socio no existe");
+            }
+        }
+
+        private void mostrarBusqueda(Socio s)
+        {
+            lblNombre.Visible = true;
+            btnDetalleSocio.Visible = true;
+            panel1.Visible = false;
+            verPrestamosToolStripMenuItem.Enabled = true;
+            verReservasToolStripMenuItem.Enabled = true;
+            realizarPrestamoToolStripMenuItem.Enabled = true;
+            devolverToolStripMenuItem.Enabled = true;
+
+            lblNombre.Text = string.Concat(string.Concat(s.Nombres, " "), s.Apellido);
+            //Debería cargar automáticamente los préstamos que tiene esa persona vigentes
         }
 
         private void FrmInicio_Load(object sender, EventArgs e)
         {
+            bilbioteca = biblioteca.recuperarse();
+        }
 
+        private void txtDni_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNroSocio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buscarLibrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private void verReservasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        private void verPrestamosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        private void devolverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        private void realizarPrestamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
         }
     }
 }
