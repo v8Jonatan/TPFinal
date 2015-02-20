@@ -14,22 +14,26 @@ using System.IO;
 
 
 
-namespace RN {
-	public class Libro {
+namespace RN
+{
+    public class Libro
+    {
         private int codigo;
         private string autor;
         private string titulo;
         private string genero;
-        private string isbn;
+        private int isbn;
+        private string editorial;
         private List<Ejemplar> ejemplares;
 
-		public Libro(int cod, string a, string t, string g, string isbn)
+        public Libro(int cod, string a, string t, string g, int isbn, string ed)
         {
             codigo = cod;
             autor = a;
             titulo = t;
             genero = g;
             this.isbn = isbn;
+            editorial = ed;
             ejemplares = new List<Ejemplar>();
         }
 
@@ -53,10 +57,15 @@ namespace RN {
             get { return genero; }
             set { genero = value; }
         }
-        public string Isbn
+        public int Isbn
         {
             get { return isbn; }
             set { isbn = value; }
+        }
+        public string Editorial
+        {
+            get { return editorial; }
+            set { editorial = value; }
         }
         public List<Ejemplar> Ejemplares
         {
@@ -65,10 +74,11 @@ namespace RN {
         }
 
 
-		~Libro(){
+        ~Libro()
+        {
 
-		}
+        }
 
-	}//end Libro
+    }//end Libro
 
 }//end namespace Clases

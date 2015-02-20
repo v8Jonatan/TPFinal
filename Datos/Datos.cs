@@ -70,7 +70,7 @@ namespace Datos
                 // parametro de salida 
                 MySqlParameter idSocio = new MySqlParameter("paramId", MySqlDbType.Int32);
                 idSocio.Direction = ParameterDirection.Output;
-                idSocio.Value = 0;  
+                idSocio.Value = 0;
                 cmd.Parameters.Add(idSocio);
 
                 //parametros del insert se crea cada uno y se lo agrega al mysqlcommand cmd
@@ -98,27 +98,90 @@ namespace Datos
                 return 0;   //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
         }
 
-        public List<Object> cargarSocios()
+        public DataTable cargarSocios()
         {
-            /*Acá no sé como usar el list<>´porque no me funciona
-             * castear la lista tipo object. Igualmente una solucion
-             * seria usar Arraylist como vimos en clase. Pero es dificil 
-             * hacerlo asi que iba a preguntarte como era la forma que
-             * usaste vos en tu programa
-             */
+            //if (openConnection())
+            //{
+            /*  Alternativa 1
+            */
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure; // para que sepa que es un procedimiento almacenado
+            cmd.CommandText = "recuperarSocios"; // el nombre del proceso almacenado
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "socios");
+            DataTable dt = ds.Tables["socios"];
+            closeConnection();
+            return dt;
 
-            List<Object> socios = new List<Object>();
-            //Vale por codigo linq para rescatar los socios de la bd
 
-            return socios;
+            /*Alternativa 2
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "recuperarSocios";
+            cmd = new MySqlCommand();
+            MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adaptador.Fill(ds);
+            ArrayList lista = new ArrayList();
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
+            {
+                lista.Add(ds.Tables[0].Columns[i].ColumnName);
+            }
+            */
+
+            /*Alternativa 3
+            cmd = new MySqlCommand();
+            cmd.CommandText = "recuperarSocios2";
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlParameter idSocio = new MySqlParameter("p_id_socio", MySqlDbType.Int32);
+            idSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(idSocio);
+
+            MySqlParameter dniSocio = new MySqlParameter("p_dni", MySqlDbType.Int32);
+            dniSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(dniSocio);
+
+            MySqlParameter apeSocio = new MySqlParameter("p_apellido", MySqlDbType.VarChar);
+            apeSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(apeSocio);
+
+            MySqlParameter nomSocio = new MySqlParameter("p_nombres", MySqlDbType.VarChar);
+            nomSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(nomSocio);
+
+            MySqlParameter telSocio = new MySqlParameter("p_telefono", MySqlDbType.Int32);
+            telSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(telSocio);
+
+            MySqlParameter tipoSocio = new MySqlParameter("p_tipo", MySqlDbType.VarChar);
+            tipoSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(idSocio);
+            */
+
+            //  return 1;
+            //}
+            //else
+            //  return 0;  //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
+
         }
 
-        public List<Object> cargarLibros()
+        public DataTable cargarLibros()
         {
-            List<Object> libros = new List<Object>();
-            //Vale por codigo linq para rescatar los libros de la bd
-
-            return libros;
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure; // para que sepa que es un procedimiento almacenado
+            cmd.CommandText = "recuperarLibros"; // el nombre del proceso almacenado
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "libros");
+            DataTable dt = ds.Tables["libros"];
+            closeConnection();
+            return dt;
         }
 
         public List<Object> cargarReservas()
@@ -144,7 +207,6 @@ namespace Datos
 
             return autores;
         }
-
     }
 
     
