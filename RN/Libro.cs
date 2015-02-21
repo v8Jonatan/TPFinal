@@ -33,6 +33,21 @@ namespace RN {
             ejemplares = new List<Ejemplar>();
         }
 
+        public Libro(string t, string g, string isbn, int cantEjemplares)
+        {
+            titulo = t;
+            genero = g;
+            this.isbn = isbn;
+            ejemplares = new List<Ejemplar>();
+            Ejemplar ejem;
+            for (int i = 0; i < cantEjemplares; i++)
+            {
+                ejem = new Ejemplar(i + 1, this, "DISPONIBLE");
+                ejemplares.Add(ejem);
+            }
+
+        }
+
         public int Codigo
         {
             get { return codigo; }

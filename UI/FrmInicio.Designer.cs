@@ -100,7 +100,7 @@
             // 
             this.verReservasToolStripMenuItem.Enabled = false;
             this.verReservasToolStripMenuItem.Name = "verReservasToolStripMenuItem";
-            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.verReservasToolStripMenuItem.Text = "Ver Reservas";
             this.verReservasToolStripMenuItem.Click += new System.EventHandler(this.verReservasToolStripMenuItem_Click);
             // 
@@ -153,6 +153,7 @@
             this.agregarLibroToolStripMenuItem.Name = "agregarLibroToolStripMenuItem";
             this.agregarLibroToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.agregarLibroToolStripMenuItem.Text = "Agregar Libro";
+            this.agregarLibroToolStripMenuItem.Click += new System.EventHandler(this.agregarLibroToolStripMenuItem_Click);
             // 
             // agregarEjemplarToolStripMenuItem
             // 

@@ -16,6 +16,7 @@ namespace UI
         {
             InitializeComponent();
             biblioteca = new Biblioteca();
+          
         }
         
         private void agregarSocioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace UI
             {
                 s = biblioteca.buscarNroSocio(int.Parse(txtNroSocio.Text));
                 if (s != null){
-                    txtNroSocio.Text = s.Dni.ToString();
+                   txtDni.Text = s.Dni.ToString();
                     mostrarBusqueda(s);
                 }
                 else
@@ -77,7 +78,10 @@ namespace UI
 
         private void FrmInicio_Load(object sender, EventArgs e)
         {
+
             biblioteca = biblioteca.recuperarse();
+            //version de prueba mia anterior  
+           // biblioteca.cargarse();
         }
 
         private void txtDni_TextChanged(object sender, EventArgs e)
@@ -113,6 +117,17 @@ namespace UI
         private void realizarPrestamoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+        }
+
+        private void agregarLibroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmLibros fr = new FrmLibros();
+            fr.ShowDialog();
+            Libro libro = fr.NuevoLibro;
+            if (libro != null)
+            {
+                biblioteca.agregarLibro(libro);
+            }
         }
     }
 }

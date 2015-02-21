@@ -23,3 +23,7 @@ D:\Personal\Escritorio\TPFinal\RN\bin\Debug\DbLinq.MySql.pdb
 D:\Personal\Escritorio\TPFinal\RN\obj\Debug\RN.csprojResolveAssemblyReference.cache
 D:\Personal\Escritorio\TPFinal\RN\obj\Debug\RN.dll
 D:\Personal\Escritorio\TPFinal\RN\obj\Debug\RN.pdb
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\DbLinq.dll
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\DbLinq.MySql.dll
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\DbLinq.pdb
+C:\Users\jonatan\Documents\GitHub\TPFinal\RN\bin\Debug\DbLinq.MySql.pdb

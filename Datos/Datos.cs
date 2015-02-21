@@ -14,20 +14,30 @@ namespace Datos
         string strcon;
         MySqlConnection con;
         MySqlCommand cmd;
+        BibLiOtEcA db;
 
         public Datos()
         {
             //Conexion para mysql con stored procedures
-            strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
-            //string strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
-            con = new MySqlConnection(strcon);
-
-            //Conexion para linq
-            string dbServer = Environment.GetEnvironmentVariable("DbLinqServer") ?? "umsebastianbd.ddns.net";
+             //strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
+             strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
+             con = new MySqlConnection(strcon);
+             /*
+             //Conexion para linq
+             string dbServer = Environment.GetEnvironmentVariable("DbLinqServer") ?? "umsebastianbd.ddns.net";
+             // BUG: El contexto debe ser desechable
+             string connStr = String.Format("server={0};user id={1}; password={2}; database={3}"
+                 , dbServer, "SebastianF", "thiago1311", "biblioteca");
+             db = new BibLiOtEcA(new MySqlConnection(connStr));
+             */
+            
+            
+             string dbServer = Environment.GetEnvironmentVariable("DbLinqServer") ?? "localhost";
             // BUG: El contexto debe ser desechable
             string connStr = String.Format("server={0};user id={1}; password={2}; database={3}"
-                , dbServer, "SebastianF", "thiago1311", "biblioteca");
+                , dbServer, "v8jonatan", "v8jonatan", "biblioteca");
             BibLiOtEcA db = new BibLiOtEcA(new MySqlConnection(connStr));
+            
         }
 
         private bool openConnection()
@@ -98,7 +108,7 @@ namespace Datos
                 return 0;   //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
         }
 
-        public List<Object> cargarSocios()
+        public List<SocioDO> cargarSocios()
         {
             /*Acá no sé como usar el list<>´porque no me funciona
              * castear la lista tipo object. Igualmente una solucion
@@ -107,10 +117,106 @@ namespace Datos
              * usaste vos en tu programa
              */
 
-            List<Object> socios = new List<Object>();
+            /*
+             * Yo estaba usando los objetos que te crea linq solo y creo que con 
+             * este linq para mysql tambien te los crea solo 
+             * pero podriamos usar unos objetos de la clase datos dejo un ejemplo c
+             * con el socio SocioDO dataobject 
+             */
+
+              List<SocioDO> socios = new List<SocioDO>();
             //Vale por codigo linq para rescatar los socios de la bd
 
+/*            var socios =   from s in db.SoCIoS
+                           from u in db.UsUarIoS
+                           where s.IDSoCIo==u.IDSoCIo
+                           select new  SocioDO(s.IDSoCIo,(int)s.TeLEFOnO,s.DNi,u.Email,s.NoMbReS,s.ApeLLido,s.TipO);
+ */
+            var consulta = from s in db.SoCIoS
+
+                         select s;
+
+            
+                           
+
+            SocioDO so;
+            foreach (var s in consulta)
+            {
+                var consulta2 = from u in db.UsUarIoS
+                                where u.IDSoCIo==s.IDSoCIo
+                                select u;
+
+                so = new SocioDO(s.IDSoCIo, (int)s.TeLEFOnO, s.DNi,consulta2.FirstOrDefault().Email,s.NoMbReS, s.ApeLLido, s.TipO);
+                socios.Add(so);
+            }
+
+
             return socios;
+        }
+        
+
+        public int altaLibro(string tit, string gen, string _isbn,int cantEjemplares,int autor)
+        {
+            if (openConnection())
+            {
+                cmd = new MySqlCommand();
+                cmd.CommandText = "altaLibro";
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // parametro de salida 
+                MySqlParameter idLibro = new MySqlParameter("paramId", MySqlDbType.Int32);
+                idLibro.Direction = ParameterDirection.Output;
+                idLibro.Value = 0;
+                cmd.Parameters.Add(idLibro);
+
+                MySqlParameter titulo = new MySqlParameter("paramTitulo",tit);
+                cmd.Parameters.Add(titulo);
+                MySqlParameter genero = new MySqlParameter("paramGenero", gen);
+                cmd.Parameters.Add(genero);
+                MySqlParameter isbn = new MySqlParameter("paramIsbn", _isbn);
+                cmd.Parameters.Add(isbn);
+                MySqlParameter ejemplares = new MySqlParameter("paramEjemplar", cantEjemplares);
+                cmd.Parameters.Add(ejemplares);
+                MySqlParameter idAutor = new MySqlParameter("paramId_Autor", autor);
+                cmd.Parameters.Add(idAutor);
+
+                cmd.ExecuteNonQuery();
+
+                closeConnection();
+
+                return (int)idLibro.Value;
+            }
+            return 0;
+        }
+        // devolver un array posibilidad de devolver un objeto de datos
+        public List<String> recuperarSocios()
+        {
+            MySqlDataAdapter da;
+            DataTable dt;
+            List<String> lista = new List<string>();
+            if (openConnection())
+            {
+                cmd = new MySqlCommand();
+                cmd.CommandText = "recuperarSocios";
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                da = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    for (int i = 0; i < row.ItemArray.Length; i++)
+                    {
+                        lista.Add(row.ItemArray[i].ToString());
+                    }
+
+                }
+
+            }
+            return lista;
+
         }
 
         public List<Object> cargarLibros()
