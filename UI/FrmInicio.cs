@@ -12,11 +12,14 @@ namespace UI
     public partial class FrmInicio : Form
     {
         private Biblioteca biblioteca;
+        private Socio socioActual;
         public FrmInicio()
         {
             InitializeComponent();
+
             biblioteca = new Biblioteca();
-          
+            Biblioteca nueva = biblioteca.recuperarse();
+            biblioteca = nueva;
         }
         
         private void agregarSocioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,7 +66,8 @@ namespace UI
         }
 
         private void mostrarBusqueda(Socio s)
-        {
+        {   
+            this.socioActual=s;
             lblNombre.Visible = true;
             btnDetalleSocio.Visible = true;
             panel1.Visible = false;
@@ -78,8 +82,8 @@ namespace UI
 
         private void FrmInicio_Load(object sender, EventArgs e)
         {
-
-            biblioteca = biblioteca.recuperarse();
+            
+           
             //version de prueba mia anterior  
            // biblioteca.cargarse();
         }
@@ -117,6 +121,12 @@ namespace UI
         private void realizarPrestamoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            if (datagridDatos.SelectedRows.Count == 1)
+            {
+                int codLibro=(int)datagridDatos.SelectedRows[0].Cells[0].Value;
+                biblioteca.RealizarPrestamo(codLibro, socioActual);
+
+            }
         }
 
         private void agregarLibroToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,6 +137,15 @@ namespace UI
             if (libro != null)
             {
                 biblioteca.agregarLibro(libro);
+            }
+        }
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            if (radiobtnTitulo.Checked)
+            {
+                datagridDatos.DataSource=
+                biblioteca.buscarLibro(txtBusqueda.Text,"titulo");
             }
         }
     }

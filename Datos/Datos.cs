@@ -19,8 +19,8 @@ namespace Datos
         public Datos()
         {
             //Conexion para mysql con stored procedures
-             strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
-            // strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
+             //strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
+             strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
              con = new MySqlConnection(strcon);
              /*
              //Conexion para linq
@@ -121,7 +121,7 @@ namespace Datos
             cmd = new MySqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure; // para que sepa que es un procedimiento almacenado
-            cmd.CommandText = "recuperarSocios"; // el nombre del proceso almacenado
+            cmd.CommandText = "recuperarSocios2"; // el nombre del proceso almacenado
             DataSet ds = new DataSet();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(ds, "socios");

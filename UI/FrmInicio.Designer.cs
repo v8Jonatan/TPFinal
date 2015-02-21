@@ -84,7 +84,7 @@
             // agregarSocioToolStripMenuItem
             // 
             this.agregarSocioToolStripMenuItem.Name = "agregarSocioToolStripMenuItem";
-            this.agregarSocioToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.agregarSocioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.agregarSocioToolStripMenuItem.Text = "Agregar Socio";
             this.agregarSocioToolStripMenuItem.Click += new System.EventHandler(this.agregarSocioToolStripMenuItem_Click);
             // 
@@ -294,6 +294,7 @@
             this.btnBusqueda.TabIndex = 1;
             this.btnBusqueda.Text = "Buscar";
             this.btnBusqueda.UseVisualStyleBackColor = true;
+            this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
             // txtBusqueda
             // 

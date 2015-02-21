@@ -1,0 +1,24 @@
+﻿body {
+
+}
+#contenedor {
+    width: 900px;
+    height: 400px;
+}
+#cabecera {
+       background-color: green;
+       height:135px;
+       padding:5px;
+}
+  #izquierdo {
+            background-color: orange;
+            float: left;
+            width:140px;
+            height:100%;
+        }
+    #contenido {
+            background-color: gray;
+            float:left;
+            width:760px;
+            height:100%;
+        }

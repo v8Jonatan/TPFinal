@@ -49,6 +49,16 @@ namespace RN
             get { return autores; }
             set { autores = value; }
         }
+        public List<Libro> buscarLibro(string busqueda,string tipo)
+        {
+            List<Libro> lista = new List<Libro>();
+            foreach (Libro l in libros)
+            {
+                if (l.like(busqueda))
+                    lista.Add(l);
+            }
+            return lista;
+        }
 
         //Caso de Uso 1 Agregar Socio
         public Socio buscarDni(int dni)
@@ -87,33 +97,58 @@ namespace RN
 
 
         }
-        // me parece buena idea usar para las altas stored procedures y
-        // hacer todo lo de recuperar de la bd con linq todavia no probe ninguno
-        // pero podriamos hacer objetos de datos para enviarlos desde la capa datos
-        //algo asi como una estructura
+        public void RealizarPrestamo(int codLibro,Socio s)
+        {
+            // Metodo para traer los buscar un ejemplar disponible.
+            // Version 1 si ejemplar Estado=DISPONIBLE
+            Libro libro = libros.Find(x => x.Codigo == codLibro);
+            Prestamo prestamo;
+            if (libro != null)
+            {
+                Ejemplar ejemplar= libro.disponible();
+                prestamo= new Prestamo(,):
+
+                    
+            }
+
+        }
         public Biblioteca recuperarse()
         {
             Biblioteca biblioteca = new Biblioteca();
             Datos.Datos d = new Datos.Datos();
 
-            
-           // biblioteca.Socios = d.cargarSocios();
-            Socio socio;
-            foreach( SocioDO s in d.cargarSocios2())
-            {
-                if(s.Tipo.Equals("COMUN"))
-                    socio = new Comun(s.Id,s.Correo,s.Nombres,s.Apellido,s.Telefono,s.Dni);
-                else 
-                    socio = new Especial(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
-
-                biblioteca.Socios.Add(socio);
-            }
             biblioteca.recuperarSocios(d.cargarSocios());
+            biblioteca.recuperarLibros(d.cargarLibros());
             //biblioteca.recuperarLibros(d.cargarLibros());
             //biblioteca.recuperarReservas(d.cargarReservas());
             //biblioteca.recuperarPrestamos(d.cargarPrestamos());
             //biblioteca.recuperarAutores(d.cargarAutores());
 
+            return biblioteca;
+        }
+
+        // me parece buena idea usar para las altas stored procedures y
+        // hacer todo lo de recuperar de la bd con linq todavia no probe ninguno
+        // pero podriamos hacer objetos de datos para enviarlos desde la capa datos
+        //algo asi como una estructura
+        public Biblioteca recuperarse2()
+        {
+            Biblioteca biblioteca = new Biblioteca();
+            Datos.Datos d = new Datos.Datos();
+
+
+           
+            Socio socio;
+            foreach (SocioDO s in d.cargarSocios2())
+            {
+                if (s.Tipo.Equals("COMUN"))
+                    socio = new Comun(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
+                else
+                    socio = new Especial(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
+
+                biblioteca.Socios.Add(socio);
+            }
+          
             return biblioteca;
         }
         
@@ -135,7 +170,9 @@ namespace RN
             {
                 libro = l;
                 Datos.Datos d = new Datos.Datos();
-                d.altaLibro(libro.Titulo,libro.Genero,libro.Isbn.ToString(),libro.Ejemplares.Count,1);
+                
+                l.Codigo=d.altaLibro(libro.Titulo,libro.Genero,libro.Isbn.ToString(),libro.Ejemplares.Count,1);
+                libros.Add(l);
 
             }
 

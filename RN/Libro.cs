@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Diagnostics;
 
 
 
@@ -41,7 +42,7 @@ namespace RN
         {
             titulo = t;
             genero = g;
-            this.isbn = isbn;
+            this.isbn = int.Parse(isbn);
             ejemplares = new List<Ejemplar>();
             Ejemplar ejem;
             for (int i = 0; i < cantEjemplares; i++)
@@ -51,7 +52,43 @@ namespace RN
             }
 
         }
+        public Ejemplar disponible()
+        {
+            // buscar un ejemplar disponible el dia  diaRetiro para ser prestamo
+            int i=0;
+            while(i<ejemplares.Count && !ejemplares[i].EstadoActual.Equals("DISPONIBLE"))
+            {
+                i++;
+            }
+            if (i == ejemplares.Count)
+                return null;
+            else
+            {
+                return ejemplares[i];
+            }
+        }
+        public bool like(string busqueda)
+        {
 
+            string[] vacio = { " ", ",", "." };
+            string[] palabrasBusqueda = busqueda.Split(vacio, 10, StringSplitOptions.RemoveEmptyEntries);
+            string[] palabrasTitulo = titulo.Split(vacio, 10, StringSplitOptions.RemoveEmptyEntries);
+            Boolean coincidencia = false;
+   
+            foreach (string busq in palabrasBusqueda)
+            {
+                foreach(string tit in palabrasTitulo)
+                {
+                    if (busq.Equals(tit))
+                        coincidencia = true;
+                   
+                }
+
+                   
+            }
+            return coincidencia;
+               
+            }
         public int Codigo
         {
             get { return codigo; }
