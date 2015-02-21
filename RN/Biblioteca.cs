@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Datos;
+using System.Data;
+
 namespace RN
 {
     public class Biblioteca
@@ -93,10 +95,11 @@ namespace RN
         {
             Biblioteca biblioteca = new Biblioteca();
             Datos.Datos d = new Datos.Datos();
+
             
            // biblioteca.Socios = d.cargarSocios();
             Socio socio;
-            foreach( SocioDO s in d.cargarSocios())
+            foreach( SocioDO s in d.cargarSocios2())
             {
                 if(s.Tipo.Equals("COMUN"))
                     socio = new Comun(s.Id,s.Correo,s.Nombres,s.Apellido,s.Telefono,s.Dni);
@@ -105,14 +108,15 @@ namespace RN
 
                 biblioteca.Socios.Add(socio);
             }
-            /*
-            biblioteca.Libros = d.cargarLibros();
-            biblioteca.Reservas = d.cargarReservas();
-            biblioteca.Prestamos = d.cargarPrestamos();
-            biblioteca.Autores = d.cargarAutores();
-            */
+            biblioteca.recuperarSocios(d.cargarSocios());
+            //biblioteca.recuperarLibros(d.cargarLibros());
+            //biblioteca.recuperarReservas(d.cargarReservas());
+            //biblioteca.recuperarPrestamos(d.cargarPrestamos());
+            //biblioteca.recuperarAutores(d.cargarAutores());
+
             return biblioteca;
         }
+        
 
 
 
@@ -131,7 +135,7 @@ namespace RN
             {
                 libro = l;
                 Datos.Datos d = new Datos.Datos();
-                d.altaLibro(libro.Titulo,libro.Genero,libro.Isbn,libro.Ejemplares.Count,1);
+                d.altaLibro(libro.Titulo,libro.Genero,libro.Isbn.ToString(),libro.Ejemplares.Count,1);
 
             }
 
@@ -140,7 +144,7 @@ namespace RN
         {
             //posibidad de buscar por otro atributo tambien
             
-            if (l.Isbn == " ")//identificar ausencia de isbn
+            if (l.Isbn == 0)//identificar ausencia de isbn
             {
                 l = null;
             }
@@ -159,11 +163,11 @@ namespace RN
         {
 
 
-            recuperarSocios();
+            recuperarSocios2();
 
         }
         //Asi me quedo usando una forma parecida a lo que haciamos en clase
-        private void recuperarSocios()
+        private void recuperarSocios2()
         {
             Datos.Datos d = new Datos.Datos();
             List<String> datos = d.recuperarSocios(); // este metodo devuelve todo en string 
@@ -188,5 +192,73 @@ namespace RN
 
 
         }
+
+     
+          
+          
+        public void recuperarSocios(DataTable dt)
+        {
+            Socio s;
+            int id;
+            int dni;
+            string apellido;
+            string nombres;
+            int telefono;
+            string correo;
+
+            foreach(DataRow row in dt.Rows)
+            {
+                id = row.Field<int>("id_socio");
+                dni = row.Field<int>("DNI");
+                apellido = row.Field<string>("apellido");
+                nombres = row.Field<string>("nombres");
+                telefono = row.Field<int>("telefono");
+                correo = row.Field<string>("email");
+                if (row.Field<string>("tipo").Trim().Equals("COMUN"))
+                    s = new Comun(id, correo, nombres, apellido, telefono, dni);
+                else
+                    s = new Especial(id, correo, nombres, apellido, telefono, dni);
+                socios.Add(s);
+            }
+        }
+
+        public void recuperarLibros(DataTable dt)
+        {
+            Libro l;
+            int codigo;
+            string autor;
+            string titulo;
+            string genero;
+            int isbn;
+            string editorial;
+            foreach (DataRow row in dt.Rows)
+            {
+                codigo = row.Field<int>("id_libro");
+                titulo = row.Field<string>("titulo");
+                genero = row.Field<string>("genero");
+                isbn = row.Field<int>("ISBN");
+                editorial = row.Field<string>("editorial");
+                autor = row.Field<string>("apenom");
+                l = new Libro(codigo, autor, titulo, genero, isbn, editorial);
+                libros.Add(l);
+            }
+        }
+
+        public void recuperarReservas()
+        {
+
+        }
+
+        public void recuperarPrestamos()
+        {
+
+        }
+
+        public void recuperarAutores()
+        {
+
+        }
+ 
+
     }
 }

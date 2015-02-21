@@ -14,12 +14,14 @@ using System.Data;
 
 
 
-namespace RN {
-	public abstract class Socio {
+namespace RN
+{
+    public abstract class Socio
+    {
 
         private int id;
         private string correo;
-		private string nombre;
+        private string nombre;
         private string apellido;
         private int telefono;
         private int dni;
@@ -54,17 +56,18 @@ namespace RN {
         {
             get { return apellido; }
         }
-      
+
         public int Telefono
         {
             get { return telefono; }
         }
         public abstract string getTipo();
-        
-		~Socio(){
 
-		}
+        ~Socio()
+        {
 
-	}//end Socio
+        }
+
+    }//end Socio
 
 }//end namespace Clases

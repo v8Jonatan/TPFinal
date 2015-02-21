@@ -19,8 +19,8 @@ namespace Datos
         public Datos()
         {
             //Conexion para mysql con stored procedures
-             //strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
-             strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
+             strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
+            // strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
              con = new MySqlConnection(strcon);
              /*
              //Conexion para linq
@@ -32,11 +32,11 @@ namespace Datos
              */
             
             
-             string dbServer = Environment.GetEnvironmentVariable("DbLinqServer") ?? "localhost";
+            /* string dbServer = Environment.GetEnvironmentVariable("DbLinqServer") ?? "localhost";
             // BUG: El contexto debe ser desechable
             string connStr = String.Format("server={0};user id={1}; password={2}; database={3}"
                 , dbServer, "v8jonatan", "v8jonatan", "biblioteca");
-            BibLiOtEcA db = new BibLiOtEcA(new MySqlConnection(connStr));
+            BibLiOtEcA db = new BibLiOtEcA(new MySqlConnection(connStr));*/
             
         }
 
@@ -80,7 +80,7 @@ namespace Datos
                 // parametro de salida 
                 MySqlParameter idSocio = new MySqlParameter("paramId", MySqlDbType.Int32);
                 idSocio.Direction = ParameterDirection.Output;
-                idSocio.Value = 0;  
+                idSocio.Value = 0;
                 cmd.Parameters.Add(idSocio);
 
                 //parametros del insert se crea cada uno y se lo agrega al mysqlcommand cmd
@@ -108,15 +108,91 @@ namespace Datos
                 return 0;   //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
         }
 
-        public List<SocioDO> cargarSocios()
-        {
-            /*Acá no sé como usar el list<>´porque no me funciona
-             * castear la lista tipo object. Igualmente una solucion
-             * seria usar Arraylist como vimos en clase. Pero es dificil 
-             * hacerlo asi que iba a preguntarte como era la forma que
-             * usaste vos en tu programa
-             */
+      
 
+        public DataTable cargarSocios()
+
+        {
+            //if (openConnection())
+            //{
+            /*  Alternativa 1
+            */
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure; // para que sepa que es un procedimiento almacenado
+            cmd.CommandText = "recuperarSocios"; // el nombre del proceso almacenado
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "socios");
+            DataTable dt = ds.Tables["socios"];
+            closeConnection();
+            return dt;
+
+
+            /*Alternativa 2
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "recuperarSocios";
+            cmd = new MySqlCommand();
+            MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adaptador.Fill(ds);
+            ArrayList lista = new ArrayList();
+            for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
+            {
+                lista.Add(ds.Tables[0].Columns[i].ColumnName);
+            }
+            */
+            /*
+            Alternativa 3
+            cmd = new MySqlCommand();
+            cmd.CommandText = "recuperarSocios2";
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlParameter idSocio = new MySqlParameter("p_id_socio", MySqlDbType.Int32);
+            idSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(idSocio);
+
+            MySqlParameter dniSocio = new MySqlParameter("p_dni", MySqlDbType.Int32);
+            dniSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(dniSocio);
+
+            MySqlParameter apeSocio = new MySqlParameter("p_apellido", MySqlDbType.VarChar);
+            apeSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(apeSocio);
+
+
+
+              List<SocioDO> socios = new List<SocioDO>();
+     
+            
+
+            MySqlParameter nomSocio = new MySqlParameter("p_nombres", MySqlDbType.VarChar);
+            nomSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(nomSocio);
+
+            MySqlParameter telSocio = new MySqlParameter("p_telefono", MySqlDbType.Int32);
+            telSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(telSocio);
+
+            MySqlParameter tipoSocio = new MySqlParameter("p_tipo", MySqlDbType.VarChar);
+            tipoSocio.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(idSocio);
+          
+            */
+            //  return 1;
+            //}
+            //else
+            //  return 0;  //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
+
+
+        }
+
+        public List<SocioDO> cargarSocios2()
+
+        {
+             
             /*
              * Yo estaba usando los objetos que te crea linq solo y creo que con 
              * este linq para mysql tambien te los crea solo 
@@ -124,20 +200,16 @@ namespace Datos
              * con el socio SocioDO dataobject 
              */
 
-              List<SocioDO> socios = new List<SocioDO>();
+               List<SocioDO> socios = new List<SocioDO>();
             //Vale por codigo linq para rescatar los socios de la bd
 
-/*            var socios =   from s in db.SoCIoS
+             /*var socios =   from s in db.SoCIoS
                            from u in db.UsUarIoS
                            where s.IDSoCIo==u.IDSoCIo
-                           select new  SocioDO(s.IDSoCIo,(int)s.TeLEFOnO,s.DNi,u.Email,s.NoMbReS,s.ApeLLido,s.TipO);
- */
+                           select new  SocioDO(s.IDSoCIo,(int)s.TeLEFOnO,s.DNi,u.Email,s.NoMbReS,s.ApeLLido,s.TipO);*/
+
             var consulta = from s in db.SoCIoS
-
                          select s;
-
-            
-                           
 
             SocioDO so;
             foreach (var s in consulta)
@@ -219,12 +291,19 @@ namespace Datos
 
         }
 
-        public List<Object> cargarLibros()
+        public DataTable cargarLibros()
         {
-            List<Object> libros = new List<Object>();
-            //Vale por codigo linq para rescatar los libros de la bd
-
-            return libros;
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure; // para que sepa que es un procedimiento almacenado
+            cmd.CommandText = "recuperarLibros"; // el nombre del proceso almacenado
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "libros");
+            DataTable dt = ds.Tables["libros"];
+            closeConnection();
+            return dt;
         }
 
         public List<Object> cargarReservas()
@@ -250,7 +329,6 @@ namespace Datos
 
             return autores;
         }
-
     }
 
     
