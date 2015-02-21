@@ -71,20 +71,11 @@ namespace RN
             return socios.Find(x => x.Id == nroSocio);
         }
 
-        /*El metodo toma los datos por parametro
-        * Buscamos al socio por dni primero para ver si ya existe despues lo agregamos a la 
-        * base de datos y recuperamos el mismo como objeto para traer el idSocio (que es autonumerico)
-        */
         public void agregarSocio(Socio ns)
         {
-            //busca el socio podemos hacer una funcion para recorrer el list
             Socio socioAntiguo = socios.Find(x => x.Dni == ns.Dni);
             if (socioAntiguo == null)
             {
-                // este metodo se podria mejorar capaz haciendo dos metodos distintos por que 
-                // asi como esta hace el insert y tambien asigna el id que recupera de la base de datos
-
-                //(Sebas) Me parece que está perfecto así, ya que usamos funciones diferentes por cada caso de uso. A menos que necesitemos reutilizar, sino no.
                 Datos.Datos d = new Datos.Datos();
                 ns.Id = d.altaSocio(ns.Nombres, ns.Apellido, ns.Correo, ns.Telefono, ns.Dni, ns.getTipo());
                 if (ns.Id != 0) //borrar este condicional una vez hecha exception en clase datos
@@ -94,9 +85,8 @@ namespace RN
             {
                 throw new Exception("El socio ya existe");
             }
-
-
         }
+
         public void RealizarPrestamo(int codLibro,Socio s)
         {
             // Metodo para traer los buscar un ejemplar disponible.
@@ -106,55 +96,22 @@ namespace RN
             if (libro != null)
             {
                 Ejemplar ejemplar= libro.disponible();
-                prestamo= new Prestamo(,):
+                //prestamo= new Prestamo();
 
                     
             }
 
         }
+
         public Biblioteca recuperarse()
         {
             Biblioteca biblioteca = new Biblioteca();
-            Datos.Datos d = new Datos.Datos();
-
-            biblioteca.recuperarSocios(d.cargarSocios());
-            biblioteca.recuperarLibros(d.cargarLibros());
-            //biblioteca.recuperarLibros(d.cargarLibros());
-            //biblioteca.recuperarReservas(d.cargarReservas());
-            //biblioteca.recuperarPrestamos(d.cargarPrestamos());
-            //biblioteca.recuperarAutores(d.cargarAutores());
-
-            return biblioteca;
-        }
-
-        // me parece buena idea usar para las altas stored procedures y
-        // hacer todo lo de recuperar de la bd con linq todavia no probe ninguno
-        // pero podriamos hacer objetos de datos para enviarlos desde la capa datos
-        //algo asi como una estructura
-        public Biblioteca recuperarse2()
-        {
-            Biblioteca biblioteca = new Biblioteca();
-            Datos.Datos d = new Datos.Datos();
-
-
-           
-            Socio socio;
-            foreach (SocioDO s in d.cargarSocios2())
-            {
-                if (s.Tipo.Equals("COMUN"))
-                    socio = new Comun(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
-                else
-                    socio = new Especial(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
-
-                biblioteca.Socios.Add(socio);
-            }
+            biblioteca.Socios = recuperarSocios();
           
             return biblioteca;
         }
         
-
-
-
+        //Caso de uso : Agregar libro
         public void agregarLibro(Libro l)
         {
             /*  buscamos el libro por si ya existe por isbn
@@ -177,6 +134,7 @@ namespace RN
             }
 
         }
+        
         private Libro buscarLibro(Libro l)
         {
             //posibidad de buscar por otro atributo tambien
@@ -193,72 +151,24 @@ namespace RN
             return l;
 
         }
-        
 
-        // este es uno de prueba que hice yo
-        public void cargarse()
+        public List<Socio> recuperarSocios()
         {
-
-
-            recuperarSocios2();
-
-        }
-        //Asi me quedo usando una forma parecida a lo que haciamos en clase
-        private void recuperarSocios2()
-        {
+            List<Socio> lista = new List<Socio>();
+            Socio socio;
             Datos.Datos d = new Datos.Datos();
-            List<String> datos = d.recuperarSocios(); // este metodo devuelve todo en string 
-
-            Socio s;
-            for (int i = 0; i < datos.Count - 6; i += 7)
+            foreach (SocioDO s in d.cargarSocios())
             {
-                if (datos[i + 5].Equals("COMUN"))
-                {
-                    s = new Comun(int.Parse(datos[i]), datos[i + 6], datos[i + 3], datos[i + 2], int.Parse(datos[i + 4]), int.Parse(datos[i + 1]));
-                }
+                if (s.Tipo.Equals("COMUN"))
+                    socio = new Comun(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
                 else
-                {
-                    if (datos[i + 5].Equals("ESPECIAL"))
-                        s = new Especial(int.Parse(datos[i]), datos[i + 6], datos[i + 3], datos[i + 2], int.Parse(datos[i + 4]), int.Parse(datos[i + 1]));
-                    else
-                        s = null;
-                }
-                if (s != null)
-                    socios.Add(s);
+                    socio = new Especial(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
+
+                lista.Add(socio);
             }
-
-
+            return lista;
         }
-
-     
-          
-          
-        public void recuperarSocios(DataTable dt)
-        {
-            Socio s;
-            int id;
-            int dni;
-            string apellido;
-            string nombres;
-            int telefono;
-            string correo;
-
-            foreach(DataRow row in dt.Rows)
-            {
-                id = row.Field<int>("id_socio");
-                dni = row.Field<int>("DNI");
-                apellido = row.Field<string>("apellido");
-                nombres = row.Field<string>("nombres");
-                telefono = row.Field<int>("telefono");
-                correo = row.Field<string>("email");
-                if (row.Field<string>("tipo").Trim().Equals("COMUN"))
-                    s = new Comun(id, correo, nombres, apellido, telefono, dni);
-                else
-                    s = new Especial(id, correo, nombres, apellido, telefono, dni);
-                socios.Add(s);
-            }
-        }
-
+                 
         public void recuperarLibros(DataTable dt)
         {
             Libro l;

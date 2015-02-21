@@ -43,7 +43,7 @@ namespace UI
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Socio s;
-            if (!txtDni.Text.Trim().Equals(""))                     //Revisa el textbox en el que va a hacer la búsqueda
+            if (!txtDni.Text.Trim().Equals(""))           
             {
                 s = biblioteca.buscarDni(int.Parse(txtDni.Text));
                 if (s != null){
@@ -83,9 +83,6 @@ namespace UI
         private void FrmInicio_Load(object sender, EventArgs e)
         {
             
-           
-            //version de prueba mia anterior  
-           // biblioteca.cargarse();
         }
 
         private void txtDni_TextChanged(object sender, EventArgs e)

@@ -12,16 +12,16 @@ namespace RN
         private DateTime fechaInicio;
         private DateTime fechaVencimiento;
         private bool devolucion;
-        private List<Ejemplar> libros;
+        private Libro libro;
 
-        public Prestamo(int cod, Socio s, DateTime fi, DateTime fv)
+        public Prestamo(int cod, Socio s, DateTime fi, DateTime fv, Libro l)
         {
             codigo = cod;
             socio = s;
             fechaInicio = fi;
             fechaVencimiento = fv;
             devolucion = false;
-            libros = new List<Ejemplar>();
+            libro = l;
         }
         public int Codigo
         {
@@ -48,10 +48,10 @@ namespace RN
             get { return devolucion; }
             set { devolucion = value; }
         }
-        public List<Ejemplar> Libros
+        public Libro Libro
         {
-            get { return libros; }
-            set { libros = value; }
+            get { return libro; }
+            set { libro = value; }
         }
     }
 }

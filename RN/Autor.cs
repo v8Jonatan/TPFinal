@@ -19,6 +19,7 @@ namespace RN
             nacionalidad = nac;
             libros = new List<Libro>();
         }
+
         public int Codigo
         {
             get { return codigo; }
