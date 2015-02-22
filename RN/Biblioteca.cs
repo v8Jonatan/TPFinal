@@ -87,26 +87,92 @@ namespace RN
             }
         }
 
+        // Reserva si para la fecha de reserva libro no esta reservado o entra en conflicto con un reserva
+        // Version 1 No revisa si el ejemplar esta prestado actualmente
+        // Para la web tener un metodo que me permite ver las reservas disponibles de un libro
+        // Otro posible metodo reserva la fecha de reserva posible mas proxima 
+        public void reservar(Socio s , int codLibro, DateTime fechaReserva)
+        {
+            Libro libro = libros.Find(x => x.Codigo == codLibro);
+            Reserva reserva;
+            Datos.Datos d = new Datos.Datos();
+            if (libro != null)
+            {
+
+                // buscar el primer ejemplar disponible
+                int i=0;
+                bool disponible=false;
+                DateTime fechaDev = s.fechaDevolucion(fechaReserva);
+                while(i< libro.Ejemplares.Count && !disponible)
+                {
+                    // al iniciar se supone disponible
+                    disponible=true;
+                    foreach (Reserva r in reservas)
+                    {
+                        //si al menos una reserva lo pone en no disponible
+                        if (!r.disponibleEjemplar(fechaReserva,fechaDev))
+                            disponible = false;
+                    }
+                    if(!disponible)
+                        i++;// para que no se pase el indice
+                }
+                if(disponible)
+                {
+                   //Realizo la reserva
+                }
+            }
+
+        }
         public void RealizarPrestamo(int codLibro,Socio s)
         {
             // Metodo para traer los buscar un ejemplar disponible.
-            // Version 1 si ejemplar Estado=DISPONIBLE
+            // Version 2 si ejemplar disponible y ninguna reserva impide el prestamo
+            // sig version recorrer todos los ejemplares posible
             Libro libro = libros.Find(x => x.Codigo == codLibro);
             Prestamo prestamo;
+            Datos.Datos d= new Datos.Datos();
+            if (libro == null)
+            {
+                libro = new Libro("conejo", "ge", "555", "ateneo", 4);
+                libro.Codigo = 3;
+                libros.Add(libro);
+            }
             if (libro != null)
             {
                 Ejemplar ejemplar= libro.disponible();
-                DateTime hoy = DateTime.Now;
-                int cantDias=0;
-                //prestamo= new Prestamo();
-                  foreach (Reserva r in reservas)
-                  {
-                      if (r.Ejemplar.Equals(ejemplar))
-                      {
-                          r.disponibleEjemplar(hoy, cantDias);
-                      }
+                if (ejemplar != null)
+                {
+                    DateTime hoy = DateTime.Now;
+                    DateTime fechaDev = s.fechaDevolucion(hoy);
 
-                  }
+                    bool disponible = true;
+                    // comprueba que ninguna reserva impide prestar el ejemplar
+                     foreach (Reserva r in reservas)
+                     {
+                         if (r.Ejemplar.Equals(ejemplar))
+                         {
+                             if(! r.disponibleEjemplar(hoy, s.fechaDevolucion(hoy)) )
+                             {
+                                 disponible = false;
+                             }
+                         }
+
+                     }
+                     if (disponible)
+                     {
+                         prestamo = new Prestamo(0, s, hoy, fechaDev, ejemplar);
+                         prestamo.Codigo = d.altaPrestamo(s.Id, hoy, fechaDev, ejemplar.Libro.Codigo, ejemplar.Numero);
+                         ejemplar.EstadoActual = "PRESTADO";
+                         prestamos.Add(prestamo);
+                     }
+
+                }
+                else
+                {
+                    // avisar ejemplares no disponibles
+                }
+                
+
                     
             }
 

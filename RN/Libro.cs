@@ -57,7 +57,7 @@ namespace RN
         }
         public Ejemplar disponible()
         {
-            // buscar un ejemplar disponible el dia  diaRetiro para ser prestamo
+            // buscar un ejemplar disponible 
             int i=0;
             while(i<ejemplares.Count && !ejemplares[i].EstadoActual.Equals("DISPONIBLE"))
             {

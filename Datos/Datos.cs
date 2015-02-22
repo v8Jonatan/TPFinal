@@ -18,8 +18,8 @@ namespace Datos
         public Datos()
         {
             //Conexion para mysql con stored procedures
-             strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
-             //strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
+             //strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
+             strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
              con = new MySqlConnection(strcon);
         }
 
@@ -49,6 +49,43 @@ namespace Datos
                 string error = ex.Message;
                 return false;
             }
+        }
+
+        public int altaPrestamo(int idSoc,DateTime fechaIni,DateTime fechaVenc,int idLib,int idEjemp)
+        {
+            if (openConnection())
+            {
+                cmd = new MySqlCommand();
+                cmd.CommandText = "altaPrestamo";
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // parametro de salida 
+                MySqlParameter idPrestamo = new MySqlParameter("paramId", MySqlDbType.Int32);
+                idPrestamo.Direction = ParameterDirection.Output;
+                idPrestamo.Value = 0;
+                cmd.Parameters.Add(idPrestamo);
+
+                MySqlParameter idSocio = new MySqlParameter("paramIdsocio", idSoc);
+                cmd.Parameters.Add(idSocio);
+                MySqlParameter idLibro = new MySqlParameter("paramIdlibro", idLib);
+                cmd.Parameters.Add(idLibro);
+                MySqlParameter idEjemplar = new MySqlParameter("paramIdejemplar", idEjemp);
+                cmd.Parameters.Add(idEjemplar);
+                MySqlParameter fechaInicio = new MySqlParameter("paramFechai", fechaIni);
+                cmd.Parameters.Add(fechaInicio);
+                MySqlParameter fechaVencimiento = new MySqlParameter("paramFechav", fechaVenc);
+                cmd.Parameters.Add(fechaVencimiento);
+              
+               
+                cmd.ExecuteNonQuery();
+
+                closeConnection();
+                // Devuelve parametro de salida
+                return (int)idPrestamo.Value;
+            }
+            else
+                return 0;
         }
 
         public int altaSocio(string noms, string ape, string c, int tel, int dni, string t)

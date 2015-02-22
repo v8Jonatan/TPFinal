@@ -12,16 +12,16 @@ namespace RN
         private DateTime fechaInicio;
         private DateTime fechaVencimiento;
         private bool devolucion;
-        private Libro libro;
+        private Ejemplar ejemplar; // cambiado por libro por que el prestamo en si es de un ejemplar especifico
 
-        public Prestamo(int cod, Socio s, DateTime fi, DateTime fv, Libro l)
+        public Prestamo(int cod, Socio s, DateTime fi, DateTime fv, Ejemplar ejem)
         {
             codigo = cod;
             socio = s;
             fechaInicio = fi;
             fechaVencimiento = fv;
             devolucion = false;
-            libro = l;
+            ejemplar = ejem;
         }
         public int Codigo
         {
@@ -48,10 +48,10 @@ namespace RN
             get { return devolucion; }
             set { devolucion = value; }
         }
-        public Libro Libro
+        public Ejemplar Ejemplar
         {
-            get { return libro; }
-            set { libro = value; }
+            get { return ejemplar; }
+            set { ejemplar = value; }
         }
     }
 }

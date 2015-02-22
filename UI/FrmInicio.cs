@@ -118,10 +118,11 @@ namespace UI
         private void realizarPrestamoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
-            if (datagridDatos.SelectedRows.Count == 1)
+            if (datagridDatos.SelectedRows.Count == 1)//datagridDatos.SelectedRows.Count == 1
             {
                 int codLibro=(int)datagridDatos.SelectedRows[0].Cells[0].Value;
-               // biblioteca.RealizarPrestamo(codLibro, socioActual);
+                //int codLibro = 3;
+                biblioteca.RealizarPrestamo(codLibro, socioActual);
 
             }
         }
@@ -143,11 +144,21 @@ namespace UI
 
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
+            //if (txtBusqueda.Equals("todos"))
+             //   datagridDatos.DataSource = biblioteca.Libros;
+           // else
             if (radiobtnTitulo.Checked)
             {
                 datagridDatos.DataSource=
                 biblioteca.buscarLibro(txtBusqueda.Text,"titulo");
             }
+        }
+
+        private void reservarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Metodo para reservar despues mover a la parte web
+            int idlibro=3;
+          //  biblioteca.reservar(socioActual,idlibro);
         }
     }
 }

@@ -55,6 +55,7 @@
             this.radiobtnTitulo = new System.Windows.Forms.RadioButton();
             this.btnBusqueda = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.reservarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridDatos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -84,14 +85,15 @@
             // agregarSocioToolStripMenuItem
             // 
             this.agregarSocioToolStripMenuItem.Name = "agregarSocioToolStripMenuItem";
-            this.agregarSocioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.agregarSocioToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.agregarSocioToolStripMenuItem.Text = "Agregar Socio";
             this.agregarSocioToolStripMenuItem.Click += new System.EventHandler(this.agregarSocioToolStripMenuItem_Click);
             // 
             // reservasToolStripMenuItem
             // 
             this.reservasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verReservasToolStripMenuItem});
+            this.verReservasToolStripMenuItem,
+            this.reservarToolStripMenuItem});
             this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
             this.reservasToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.reservasToolStripMenuItem.Text = "Reservas";
@@ -100,7 +102,7 @@
             // 
             this.verReservasToolStripMenuItem.Enabled = false;
             this.verReservasToolStripMenuItem.Name = "verReservasToolStripMenuItem";
-            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.verReservasToolStripMenuItem.Text = "Ver Reservas";
             this.verReservasToolStripMenuItem.Click += new System.EventHandler(this.verReservasToolStripMenuItem_Click);
             // 
@@ -303,6 +305,13 @@
             this.txtBusqueda.Size = new System.Drawing.Size(100, 20);
             this.txtBusqueda.TabIndex = 0;
             // 
+            // reservarToolStripMenuItem
+            // 
+            this.reservarToolStripMenuItem.Name = "reservarToolStripMenuItem";
+            this.reservarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reservarToolStripMenuItem.Text = "Reservar";
+            this.reservarToolStripMenuItem.Click += new System.EventHandler(this.reservarToolStripMenuItem_Click);
+            // 
             // FrmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,6 +370,7 @@
         private System.Windows.Forms.RadioButton radiobtnTitulo;
         private System.Windows.Forms.Button btnBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.ToolStripMenuItem reservarToolStripMenuItem;
     }
 }
 

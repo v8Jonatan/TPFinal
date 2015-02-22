@@ -27,6 +27,8 @@ namespace RN
             telefono = tel;
             this.dni = dni;
         }
+        public abstract DateTime fechaDevolucion(DateTime fechaInicio);
+       
         public int Id
         {
             get { return id; }

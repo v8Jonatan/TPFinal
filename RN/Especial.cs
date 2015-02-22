@@ -13,6 +13,10 @@ namespace RN
         {
             
 		}
+        public override DateTime fechaDevolucion(DateTime fechaInicio)
+        {
+            return fechaInicio.AddDays(diasRetiro);
+        }
         public override string getTipo()
         {
             return "ESPECIAL";

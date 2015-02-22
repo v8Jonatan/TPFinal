@@ -23,11 +23,48 @@ namespace RN
             fechaReserva = freser;
             retirado = false;
         }
-        
-        public Boolean disponibleEjemplar(DateTime fecha, int cantDias)
+        // version 2
+        public Boolean disponibleEjemplar(DateTime fechaIni, DateTime fechDev)
         {
+            // version 1 (borrada )servia para reservar hoy
+            // version 2 deberia servir para hoy o cualquier dia
+            // si reserva caduco la reserva ya paso la fecha de la reserva
+            if (fechaReserva < DateTime.Now)
+            {
+                return true;
+            }
+            else // 1 comprobar que la fechaDev sea menor a la fecha reserva entonces disponible 
+            {
+                if (fechDev < fechaReserva)
+                {
+                    return true;
+                }
+                else
+                {
+                    // si fecha de inicio es despues de fechaReserva hay dos casos
+                    // caso 1 : el socio es comun y si retirara el libro no esta disponible hasta 3 dias despues de la reserva
+                    //caso 2:el socio es especial y si retirara el libro no esta disponible hasta 5 dias despues de la reserva
+
+                    if (fechaIni > fechaReserva)
+                    {
+                        //caso 1 resuelve caso 2 tambien
+                        DateTime fechaDisponible = socio.fechaDevolucion(fechaReserva);
+                        if (fechaIni > fechaDisponible)
+                            return true;
+                        else
+                            return false;
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                
+                }
+
+
+            }
             
-            return fecha.AddDays(cantDias)<fechaReserva && fecha>fechaReserva;
 
         }
         public int Codigo
