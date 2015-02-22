@@ -40,12 +40,14 @@
             this.comboBoxAutores = new System.Windows.Forms.ComboBox();
             this.btnAgregarAutor = new System.Windows.Forms.Button();
             this.btnAgregarLibro = new System.Windows.Forms.Button();
+            this.lblEditorial = new System.Windows.Forms.Label();
+            this.txtEditorial = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblEjemplares
             // 
             this.lblEjemplares.AutoSize = true;
-            this.lblEjemplares.Location = new System.Drawing.Point(118, 239);
+            this.lblEjemplares.Location = new System.Drawing.Point(114, 258);
             this.lblEjemplares.Name = "lblEjemplares";
             this.lblEjemplares.Size = new System.Drawing.Size(58, 13);
             this.lblEjemplares.TabIndex = 19;
@@ -53,7 +55,7 @@
             // 
             // txtEjemplares
             // 
-            this.txtEjemplares.Location = new System.Drawing.Point(178, 236);
+            this.txtEjemplares.Location = new System.Drawing.Point(178, 255);
             this.txtEjemplares.Name = "txtEjemplares";
             this.txtEjemplares.Size = new System.Drawing.Size(100, 20);
             this.txtEjemplares.TabIndex = 18;
@@ -117,6 +119,8 @@
             // 
             // comboBoxAutores
             // 
+            this.comboBoxAutores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxAutores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxAutores.FormattingEnabled = true;
             this.comboBoxAutores.Location = new System.Drawing.Point(178, 107);
             this.comboBoxAutores.Name = "comboBoxAutores";
@@ -131,6 +135,7 @@
             this.btnAgregarAutor.TabIndex = 21;
             this.btnAgregarAutor.Text = "Agregar Autor";
             this.btnAgregarAutor.UseVisualStyleBackColor = true;
+            this.btnAgregarAutor.Click += new System.EventHandler(this.btnAgregarAutor_Click);
             // 
             // btnAgregarLibro
             // 
@@ -142,11 +147,29 @@
             this.btnAgregarLibro.UseVisualStyleBackColor = true;
             this.btnAgregarLibro.Click += new System.EventHandler(this.btnAgregarLibro_Click);
             // 
+            // lblEditorial
+            // 
+            this.lblEditorial.AutoSize = true;
+            this.lblEditorial.Location = new System.Drawing.Point(118, 224);
+            this.lblEditorial.Name = "lblEditorial";
+            this.lblEditorial.Size = new System.Drawing.Size(44, 13);
+            this.lblEditorial.TabIndex = 23;
+            this.lblEditorial.Text = "Editorial";
+            // 
+            // txtEditorial
+            // 
+            this.txtEditorial.Location = new System.Drawing.Point(178, 221);
+            this.txtEditorial.Name = "txtEditorial";
+            this.txtEditorial.Size = new System.Drawing.Size(100, 20);
+            this.txtEditorial.TabIndex = 24;
+            // 
             // FrmLibros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 381);
+            this.Controls.Add(this.txtEditorial);
+            this.Controls.Add(this.lblEditorial);
             this.Controls.Add(this.btnAgregarLibro);
             this.Controls.Add(this.btnAgregarAutor);
             this.Controls.Add(this.comboBoxAutores);
@@ -180,5 +203,7 @@
         private System.Windows.Forms.ComboBox comboBoxAutores;
         private System.Windows.Forms.Button btnAgregarAutor;
         private System.Windows.Forms.Button btnAgregarLibro;
+        private System.Windows.Forms.Label lblEditorial;
+        private System.Windows.Forms.TextBox txtEditorial;
     }
 }

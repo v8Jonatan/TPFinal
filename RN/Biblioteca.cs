@@ -96,8 +96,17 @@ namespace RN
             if (libro != null)
             {
                 Ejemplar ejemplar= libro.disponible();
+                DateTime hoy = DateTime.Now;
+                
                 //prestamo= new Prestamo();
+                  foreach (Reserva r in reservas)
+                  {
+                      if (r.Ejemplar.Equals(ejemplar))
+                      {
+                          r.disponibleEjemplar(hoy, cantDias);
+                      }
 
+                  }
                     
             }
 
@@ -110,8 +119,20 @@ namespace RN
           
             return biblioteca;
         }
+
+        public void agregarAutor(Autor au)
+        {
+            if (au != null)
+            {
+                Datos.Datos d = new Datos.Datos();
+                au.Codigo = d.altaAutor(au.Nacionalidad,au.Apenom);
+                autores.Add(au);
+            }
+                  
+        }
         
         //Caso de uso : Agregar libro
+
         public void agregarLibro(Libro l)
         {
             /*  buscamos el libro por si ya existe por isbn
@@ -128,7 +149,7 @@ namespace RN
                 libro = l;
                 Datos.Datos d = new Datos.Datos();
                 
-                l.Codigo=d.altaLibro(libro.Titulo,libro.Genero,libro.Isbn.ToString(),libro.Ejemplares.Count,1);
+                l.Codigo=d.altaLibro(libro.Titulo,libro.Genero,libro.Isbn.ToString(),libro.Ejemplares.Count,1,l.Editorial);
                 libros.Add(l);
 
             }
@@ -186,7 +207,7 @@ namespace RN
                 isbn = row.Field<int>("ISBN");
                 editorial = row.Field<string>("editorial");
                 autor = row.Field<string>("apenom");
-                l = new Libro(codigo, autor, titulo, genero, isbn, editorial);
+                l = new Libro(codigo,titulo, genero, isbn, editorial);
                 libros.Add(l);
             }
         }

@@ -23,6 +23,13 @@ namespace RN
             fechaReserva = freser;
             retirado = false;
         }
+        
+        public Boolean disponibleEjemplar(DateTime fecha, int cantDias)
+        {
+            
+            return fecha.AddDays(cantDias)<fechaReserva && fecha>fechaReserva;
+
+        }
         public int Codigo
         {
             get { return codigo; }

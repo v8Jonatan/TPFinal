@@ -18,8 +18,7 @@ namespace Datos
 
         public SocioDO(int ident,int tel,int dni,string c,string nom,string ape,string t)
         {
-            
-        
+     
             id = ident;
             correo = c;
             nombre = nom;
@@ -59,7 +58,7 @@ namespace Datos
         }
         public string Tipo
         {
-            get { return Tipo; }
+            get { return tipo; }
             set { tipo = value; }
         }
 

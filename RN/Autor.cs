@@ -25,6 +25,10 @@ namespace RN
             get { return codigo; }
             set { codigo = value; }
         }
+        public override string ToString()
+        {
+            return apenom;
+        }
         public string Apenom
         {
             get { return apenom; }

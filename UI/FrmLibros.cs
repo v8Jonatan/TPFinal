@@ -11,10 +11,16 @@ namespace UI
 {
     public partial class FrmLibros : Form
     {
-        private Libro nuevoLibro; 
-        public FrmLibros()
+        private Libro nuevoLibro;
+        private List<Autor> autores;
+        private Biblioteca biblioteca;
+        public FrmLibros(Biblioteca biblio)
         {
             InitializeComponent();
+            biblioteca = biblio;
+            comboBoxAutores.DataSource = autores;
+            comboBoxAutores.DisplayMember = "Apenom";
+            
         }
 
         private void btnAgregarLibro_Click(object sender, EventArgs e)
@@ -23,7 +29,10 @@ namespace UI
             string genero = txtGenero.Text;
             string isbn = txtIsbn.Text;
             int cantEjemplares= int.Parse(txtEjemplares.Text);
-            nuevoLibro = new Libro(titulo, genero, isbn, cantEjemplares);
+            Autor autor = (Autor)comboBoxAutores.SelectedItem;
+            string editorial = txtEditorial.Text; 
+            nuevoLibro = new Libro(titulo, genero,isbn,editorial,cantEjemplares);
+            nuevoLibro.Autor = autor;
 
             this.Close();
         }
@@ -31,5 +40,21 @@ namespace UI
         {
             get { return nuevoLibro; }
         }
+
+        private void btnAgregarAutor_Click(object sender, EventArgs e)
+        {
+            FrmAutor fr = new FrmAutor();
+            fr.ShowDialog();
+            Autor nuevoAutor = fr.NuevoAutor;
+            if (nuevoAutor != null)
+            {
+                biblioteca.agregarAutor(nuevoAutor);
+            }
+            comboBoxAutores.DataSource = null;
+            comboBoxAutores.DisplayMember = null;
+            comboBoxAutores.DataSource = biblioteca.Autores;
+            comboBoxAutores.DisplayMember = "Apenom";
+        }
+       
     }
 }

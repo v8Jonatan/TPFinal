@@ -121,19 +121,23 @@ namespace UI
             if (datagridDatos.SelectedRows.Count == 1)
             {
                 int codLibro=(int)datagridDatos.SelectedRows[0].Cells[0].Value;
-                biblioteca.RealizarPrestamo(codLibro, socioActual);
+               // biblioteca.RealizarPrestamo(codLibro, socioActual);
 
             }
         }
 
         private void agregarLibroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmLibros fr = new FrmLibros();
+            FrmLibros fr = new FrmLibros(biblioteca);
             fr.ShowDialog();
             Libro libro = fr.NuevoLibro;
             if (libro != null)
             {
                 biblioteca.agregarLibro(libro);
+            }
+            else
+            {
+                
             }
         }
 

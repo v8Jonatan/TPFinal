@@ -29,11 +29,22 @@ namespace RN
             editorial = ed;
             ejemplares = new List<Ejemplar>();
         }
+        public Libro(int cod, string t, string g, int isbn, string ed)
+        {
+            codigo = cod;
+            
+            titulo = t;
+            genero = g;
+            this.isbn = isbn;
+            editorial = ed;
+            ejemplares = new List<Ejemplar>();
+        }
 
-        public Libro(string t, string g, string isbn, int cantEjemplares)
+        public Libro(string t, string g, string isbn,string ed, int cantEjemplares)
         {
             titulo = t;
             genero = g;
+            editorial = ed;
             this.isbn = int.Parse(isbn);
             ejemplares = new List<Ejemplar>();
             Ejemplar ejem;

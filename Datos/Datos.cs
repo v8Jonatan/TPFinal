@@ -103,7 +103,7 @@ namespace Datos
             cmd = new MySqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure; 
-            cmd.CommandText = "recuperarSocios2";
+            cmd.CommandText = "recuperarSocios";
             DataSet ds = new DataSet();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(ds, "socios");
@@ -128,8 +128,36 @@ namespace Datos
             }
             return socios;
         }
+        public int altaAutor(string nacio, string apenom)
+        {
+            if (openConnection())
+            {
+                cmd = new MySqlCommand();
+                cmd.CommandText = "altaAutor";
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-        public int altaLibro(string tit, string gen, string _isbn,int cantEjemplares,int autor)
+                // parametro de salida 
+                MySqlParameter idAutor = new MySqlParameter("paramId", MySqlDbType.Int32);
+                idAutor.Direction = ParameterDirection.Output;
+                idAutor.Value = 0;
+                cmd.Parameters.Add(idAutor);
+
+                MySqlParameter nacionalidad = new MySqlParameter("paramNacionalidad",nacio);
+                cmd.Parameters.Add(nacionalidad);
+                MySqlParameter apenombre = new MySqlParameter("paramApenom",apenom);
+                cmd.Parameters.Add(apenombre);
+
+                cmd.ExecuteNonQuery();
+
+                closeConnection();
+                return (int)idAutor.Value;
+            }
+            return 0;
+           
+
+        }
+        public int altaLibro(string tit, string gen, string _isbn,int cantEjemplares,int autor,string ed)
         {
             if (openConnection())
             {
@@ -154,6 +182,9 @@ namespace Datos
                 cmd.Parameters.Add(ejemplares);
                 MySqlParameter idAutor = new MySqlParameter("paramId_Autor", autor);
                 cmd.Parameters.Add(idAutor);
+                MySqlParameter editorial = new MySqlParameter("paramEditorial", ed);
+                cmd.Parameters.Add(editorial);
+               
 
                 cmd.ExecuteNonQuery();
 
