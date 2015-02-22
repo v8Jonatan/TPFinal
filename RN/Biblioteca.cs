@@ -169,26 +169,9 @@ namespace RN
             return lista;
         }
                  
-        public void recuperarLibros(DataTable dt)
+        public void recuperarLibros()
         {
-            Libro l;
-            int codigo;
-            string autor;
-            string titulo;
-            string genero;
-            int isbn;
-            string editorial;
-            foreach (DataRow row in dt.Rows)
-            {
-                codigo = row.Field<int>("id_libro");
-                titulo = row.Field<string>("titulo");
-                genero = row.Field<string>("genero");
-                isbn = row.Field<int>("ISBN");
-                editorial = row.Field<string>("editorial");
-                autor = row.Field<string>("apenom");
-                l = new Libro(codigo, autor, titulo, genero, isbn, editorial);
-                libros.Add(l);
-            }
+            //Transformar de librodo a libro
         }
 
         public void recuperarReservas()

@@ -89,15 +89,11 @@ namespace Datos
                     return (int)idSocio.Value;
                 }
                 else
-                    return 0;   //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion 
-            
-            
+                    return 0;   //Reemplazar por MessageBox que no se puede conectar por clase exception y modificar clase Biblioteca que llama a esta funcion  
         }
 
       
-
         public List<SocioDO> cargarSocios()
-
         {
             openConnection();
             cmd = new MySqlCommand();
@@ -127,6 +123,123 @@ namespace Datos
                 socios.Add(s2);
             }
             return socios;
+        }
+
+        public List<AutorDO> cargarAutores()
+        {
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "recuperarAutores";
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "autores");
+            DataTable dt = ds.Tables["autores"];
+            closeConnection();
+
+            AutorDO a, a2;
+            a = new AutorDO();
+            List<AutorDO> autores = new List<AutorDO>();
+            foreach (DataRow row in dt.Rows)
+            {
+                a.Codigo = row.Field<int>("id_autor");
+                a.Apenom = row.Field<string>("apenom");
+                a.Nacionalidad = row.Field<string>("nacionalidad");
+                a2 = new AutorDO(a.Codigo, a.Apenom, a.Nacionalidad);
+                autores.Add(a2);
+            }
+            return autores;
+        }
+
+        public List<ReservaDO> cargarReservas()
+        {
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "recuperarAutores";
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "reservas");
+            DataTable dt = ds.Tables["reservas"];
+            closeConnection();
+
+            ReservaDO r, r2;
+            r = new ReservaDO();
+            List<ReservaDO> reservas = new List<ReservaDO>();
+            foreach (DataRow row in dt.Rows)
+            {
+                r.Codigo = row.Field<int>("id_reserva");
+                r.Libro = row.Field<int>("id_libro");
+                r.Ejemplar = row.Field<int>("id_ejemplar");
+                r.Socio = row.Field<int>("id_socio");
+                r.FechaRetiro = row.Field<DateTime>("fechaRetiro");
+                r.FechaReserva = row.Field<DateTime>("fechaReserva");
+                r.Retirado = row.Field<bool>("retirado");
+                r2 = new ReservaDO(r.Codigo, r.Libro, r.Ejemplar, r.Socio, r.FechaRetiro, r.FechaReserva, r.Retirado);
+                reservas.Add(r2);
+            }
+            return reservas;
+        }
+
+        public List<PrestamoDO> cargarPrestamos()
+        {
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "recuperarPrestamos";
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "prestamos");
+            DataTable dt = ds.Tables["prestamos"];
+            closeConnection();
+
+            PrestamoDO p, p2;
+            p = new PrestamoDO();
+            List<PrestamoDO> prestamos = new List<PrestamoDO>();
+            foreach (DataRow row in dt.Rows)
+            {
+                p.Codigo = row.Field<int>("id_prestamo");
+                p.Socio = row.Field<int>("id_socio");
+                p.FechaInicio = row.Field<DateTime>("fechaInicio");
+                p.FechaVencimiento = row.Field<DateTime>("fechaVencimiento");
+                p.Devolucion = row.Field<bool>("devolucion");
+                p2 = new PrestamoDO(p.Codigo, p.Socio, p.FechaInicio, p.FechaVencimiento, p.Libro);
+                prestamos.Add(p2);
+            }
+            return prestamos;
+        }
+
+        public List<LibroDO> cargarLibros()
+        {
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "recuperarLibros";
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "libros");
+            DataTable dt = ds.Tables["libros"];
+            closeConnection();
+
+            LibroDO l, l2;
+            l = new LibroDO();
+            List<LibroDO> libros = new List<LibroDO>();
+            foreach (DataRow row in dt.Rows)
+            {
+                l.Codigo = row.Field<int>("id_Libro");
+                l.Autor = row.Field<int>("id_autor");
+                l.Titulo = row.Field<string>("titulo");
+                l.Genero = row.Field<string>("genero");
+                l.Editorial = row.Field<string>("editorial");
+                l.Isbn = row.Field<int>("ISBN");
+                l2 = new LibroDO(l.Codigo, l.Autor, l.Titulo, l.Genero, l.Isbn, l.Editorial);
+                libros.Add(l2);
+            }
+            return libros;
         }
 
         public int altaLibro(string tit, string gen, string _isbn,int cantEjemplares,int autor)
@@ -164,48 +277,7 @@ namespace Datos
             return 0;
         }
         
-        public DataTable cargarLibros()
-        {
-            openConnection();
-            cmd = new MySqlCommand();
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "recuperarLibros"; 
-            DataSet ds = new DataSet();
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            da.Fill(ds, "libros");
-            DataTable dt = ds.Tables["libros"];
-            closeConnection();
-            return dt;
-        }
-
-        public List<Object> cargarReservas()
-        {
-            List<Object> reservas = new List<Object>();
-            //Vale por codigo linq para rescatar los reservas de la bd
-
-            return reservas;
-        }
-
-        public List<Object> cargarPrestamos()
-        {
-            List<Object> prestamos = new List<Object>();
-            //Vale por codigo linq para rescatar los prestamos de la bd
-
-            return prestamos;
-        }
-
-        public List<Object> cargarAutores()
-        {
-            List<Object> autores = new List<Object>();
-            //Vale por codigo linq para rescatar los autores de la bd
-
-            return autores;
-        }
+        
     }
-
-    
-    
-    
 
 }

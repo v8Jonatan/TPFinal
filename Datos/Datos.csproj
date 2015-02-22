@@ -44,8 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutorDO.cs" />
     <Compile Include="Datos.cs" />
+    <Compile Include="LibroDO.cs" />
+    <Compile Include="PrestamoDO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservaDO.cs" />
     <Compile Include="SocioDO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
