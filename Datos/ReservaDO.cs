@@ -3,44 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RN
+namespace Datos
 {
-    public class Reserva
+    public class ReservaDO
     {
         private int codigo;
-        private Ejemplar ejemplar;
-        private Socio socio;
+        private int libro;
+        private int ejemplar;
+        private int socio;
         private DateTime fechaRetiro;
         private DateTime fechaReserva;
         private bool retirado; //En la base de datos se guarda 0=false, 0!= true;
 
-        public Reserva(int c,Ejemplar ej, Socio s, DateTime fret, DateTime freser)
+        public ReservaDO(int c,int l, int ej, int s, DateTime fret, DateTime freser, bool r)
         {
             codigo = c;
+            libro = l;
             ejemplar = ej;
             socio = s;
             fechaRetiro = fret;
             fechaReserva = freser;
-            retirado = false;
+            retirado = r;
         }
-        
-        public Boolean disponibleEjemplar(DateTime fecha, int cantDias)
-        {
-            
-            return fecha.AddDays(cantDias)<fechaReserva && fecha>fechaReserva;
-
-        }
+        public ReservaDO() { }
         public int Codigo
         {
             get { return codigo; }
             set { codigo = value; }
         }
-        public Ejemplar Ejemplar
+        public int Libro
+        {
+            get { return libro; }
+            set { libro = value; }
+        }
+        public int Ejemplar
         {
             get { return ejemplar; }
             set { ejemplar = value; }
         }
-        public Socio Socio
+        public int Socio
         {
             get { return socio; }
             set { socio = value; }
@@ -60,8 +61,6 @@ namespace RN
             get { return retirado; }
             set { retirado = value; }
         }
-
-
 
     }
 }

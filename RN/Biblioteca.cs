@@ -97,7 +97,7 @@ namespace RN
             {
                 Ejemplar ejemplar= libro.disponible();
                 DateTime hoy = DateTime.Now;
-                
+                int cantDias=0;
                 //prestamo= new Prestamo();
                   foreach (Reserva r in reservas)
                   {
@@ -189,7 +189,8 @@ namespace RN
             }
             return lista;
         }
-                 
+
+
         public void recuperarLibros(DataTable dt)
         {
             Libro l;
@@ -207,9 +208,15 @@ namespace RN
                 isbn = row.Field<int>("ISBN");
                 editorial = row.Field<string>("editorial");
                 autor = row.Field<string>("apenom");
-                l = new Libro(codigo,titulo, genero, isbn, editorial);
+                l = new Libro(codigo, titulo, genero, isbn, editorial);
                 libros.Add(l);
             }
+        }
+
+        public void recuperarLibros()
+        {
+            //Transformar de librodo a libro
+
         }
 
         public void recuperarReservas()
