@@ -23,6 +23,7 @@ namespace RN
             fechaReserva = freser;
             retirado = false;
         }
+
         // version 2
         public Boolean disponibleEjemplar(DateTime fechaIni, DateTime fechDev)
         {

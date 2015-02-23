@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AutorDO.cs" />
     <Compile Include="Datos.cs" />
+    <Compile Include="EjemplarDO.cs" />
     <Compile Include="LibroDO.cs" />
     <Compile Include="PrestamoDO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

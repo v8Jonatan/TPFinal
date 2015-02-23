@@ -12,15 +12,17 @@ namespace Datos
         private DateTime fechaInicio;
         private DateTime fechaVencimiento;
         private bool devolucion;
+        private int ejemplar;
         private int libro;
 
-        public PrestamoDO(int cod, int s, DateTime fi, DateTime fv, int l)
+        public PrestamoDO(int cod, int s, DateTime fi, DateTime fv, bool dev, int ej, int l)
         {
             codigo = cod;
             socio = s;
             fechaInicio = fi;
             fechaVencimiento = fv;
-            devolucion = false;
+            devolucion = dev;
+            ejemplar = ej;
             libro = l;
         }
         public PrestamoDO() { }
@@ -48,6 +50,11 @@ namespace Datos
         {
             get { return devolucion; }
             set { devolucion = value; }
+        }
+        public int Ejemplar
+        {
+            get { return ejemplar; }
+            set { ejemplar = value; }
         }
         public int Libro
         {

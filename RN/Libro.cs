@@ -32,7 +32,7 @@ namespace RN
         public Libro(int cod, string t, string g, int isbn, string ed)
         {
             codigo = cod;
-            
+          
             titulo = t;
             genero = g;
             this.isbn = isbn;

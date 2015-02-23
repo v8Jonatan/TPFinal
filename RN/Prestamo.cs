@@ -12,7 +12,7 @@ namespace RN
         private DateTime fechaInicio;
         private DateTime fechaVencimiento;
         private bool devolucion;
-        private Ejemplar ejemplar; // cambiado por libro por que el prestamo en si es de un ejemplar especifico
+        private Ejemplar ejemplar;
 
         public Prestamo(int cod, Socio s, DateTime fi, DateTime fv, Ejemplar ejem)
         {
@@ -43,6 +43,7 @@ namespace RN
             get { return fechaVencimiento; }
             set { fechaVencimiento = value; }
         }
+        
         public bool Devolucion
         {
             get { return devolucion; }

@@ -123,6 +123,9 @@ namespace RN
             }
 
         }
+
+
+        //Jony, disculpame si modifica mucho, pero le agregué a socios una lista con los prestamos vigentes para facilitar el ver prestamos
         public void RealizarPrestamo(int codLibro,Socio s)
         {
             // Metodo para traer los buscar un ejemplar disponible.
@@ -171,9 +174,7 @@ namespace RN
                 {
                     // avisar ejemplares no disponibles
                 }
-                
-
-                    
+               
             }
 
         }
@@ -182,8 +183,113 @@ namespace RN
         {
             Biblioteca biblioteca = new Biblioteca();
             biblioteca.Socios = recuperarSocios();
-          
+            biblioteca.Autores = recuperarAutores();
+            biblioteca.Libros = recuperarLibros();
+            biblioteca.Reservas = recuperarReservas();
+            biblioteca.Prestamos = recuperarPrestamos();
             return biblioteca;
+        }
+
+        public List<Socio> recuperarSocios()
+        {
+            List<Socio> lista = new List<Socio>();
+            Socio socio;
+            Datos.Datos d = new Datos.Datos();
+            //Se encarga de cargar los socios
+            foreach (SocioDO s in d.cargarSocios())
+            {
+                if (s.Tipo.Equals("COMUN"))
+                    socio = new Comun(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
+                else
+                    socio = new Especial(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
+
+                lista.Add(socio); //Le falta agregar los reservas
+            }
+            return lista;
+        }
+
+        public List<Autor> recuperarAutores()
+        {
+            List<Autor> lista = new List<Autor>();
+            Autor autor;
+            Datos.Datos d = new Datos.Datos();
+            //Se encarga de cargar los autores, pero aun no carga la lista de libros
+            foreach (AutorDO a in d.cargarAutores())
+            {
+                autor = new Autor(a.Codigo,a.Apenom,a.Nacionalidad);
+                lista.Add(autor); 
+            }
+            return lista;
+        }
+
+        public List<Libro> recuperarLibros()
+        {
+            List<Libro> lista = new List<Libro>();
+            Libro libro;
+            Autor aux;
+            Datos.Datos d = new Datos.Datos();
+            //Este foreach se encarga de cargar libros sin ejemplares
+            //Ademas agrega el autor del libro y los libros al autor correspondiente
+            foreach (LibroDO l in d.cargarLibros())
+            {
+                libro = new Libro(l.Codigo, l.Titulo, l.Genero, l.Isbn, l.Editorial);
+                aux = autores.Find(x => x.Codigo == l.Autor);
+                libro.Autor = aux;          //Al libro le pongo el autor
+                aux.Libros.Add(libro);      //Al autor le pongo el libro en su lista
+                lista.Add(libro);           //Lista que contiene todos los libros
+            }
+            //Este foreach se encarga de cargar los ejemplares y el libro correspondiente
+            //Asi como tambien agregarle a los libros sus ejemplares
+            Ejemplar ej;
+            foreach (EjemplarDO ejem in d.cargarEjemplares())
+            {
+                libro = lista.Find(x => x.Codigo == ejem.Libro);
+                ej = new Ejemplar(ejem.Numero, libro , ejem.EstadoActual);
+                libro.Ejemplares.Add(ej);
+            }
+            return lista;
+        }
+        
+        public List<Prestamo> recuperarPrestamos()
+        {
+            List<Prestamo> lista = new List<Prestamo>();
+            Prestamo prestamo;
+            Socio s;
+            Ejemplar ej;
+            Libro l;
+            Datos.Datos d = new Datos.Datos();
+            foreach(PrestamoDO p in d.cargarPrestamos())
+            {
+                s = socios.Find(x => x.Id == p.Socio);          //Busco al socio correspondiente al prestamo
+                l = libros.Find(x => x.Codigo == p.Libro);      //Busco el libro correspondiente
+                ej = l.Ejemplares.Find(x => x.Numero == p.Ejemplar);        //Busco el ejemplar
+                prestamo = new Prestamo(p.Codigo, s, p.FechaInicio, p.FechaVencimiento, ej);  
+                prestamo.Devolucion = p.Devolucion;             //Pongo si fue devuelto o no ya que el inicializador pone false
+                s.Prestamos.Add(prestamo);              //Agrego el prestamo al socio
+                lista.Add(prestamo);                    //Agrego a la lista de la biblioteca
+            }
+            return lista;
+        }
+
+        public List<Reserva> recuperarReservas()
+        {
+            List<Reserva> lista = new List<Reserva>();
+            Reserva reserva;
+            Socio s;
+            Ejemplar ej;
+            Libro l;
+            Datos.Datos d = new Datos.Datos();
+            foreach(ReservaDO r in d.cargarReservas())
+            {
+                s = socios.Find(x => x.Id == r.Socio);      //Busco socio
+                l = libros.Find(x => x.Codigo == r.Libro);  //Busco libro
+                ej = l.Ejemplares.Find(x => x.Numero == r.Ejemplar);    //Busco ejemplar (se necesita para reserva)
+                reserva = new Reserva(r.Codigo, ej, s, r.FechaReserva, r.FechaRetiro); 
+                reserva.Retirado = r.Retirado;  //El inicializador lo pone en false, hay que cargarlo de la bd
+                s.Reservas.Add(reserva);    //La agrego a la lista del socio
+                lista.Add(reserva);         //La agrego a lista de la biblioteca
+            }
+            return lista;
         }
 
         public void agregarAutor(Autor au)
@@ -239,66 +345,7 @@ namespace RN
 
         }
 
-        public List<Socio> recuperarSocios()
-        {
-            List<Socio> lista = new List<Socio>();
-            Socio socio;
-            Datos.Datos d = new Datos.Datos();
-            foreach (SocioDO s in d.cargarSocios())
-            {
-                if (s.Tipo.Equals("COMUN"))
-                    socio = new Comun(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
-                else
-                    socio = new Especial(s.Id, s.Correo, s.Nombres, s.Apellido, s.Telefono, s.Dni);
-
-                lista.Add(socio);
-            }
-            return lista;
-        }
-
-
-        public void recuperarLibros(DataTable dt)
-        {
-            Libro l;
-            int codigo;
-            string autor;
-            string titulo;
-            string genero;
-            int isbn;
-            string editorial;
-            foreach (DataRow row in dt.Rows)
-            {
-                codigo = row.Field<int>("id_libro");
-                titulo = row.Field<string>("titulo");
-                genero = row.Field<string>("genero");
-                isbn = row.Field<int>("ISBN");
-                editorial = row.Field<string>("editorial");
-                autor = row.Field<string>("apenom");
-                l = new Libro(codigo, titulo, genero, isbn, editorial);
-                libros.Add(l);
-            }
-        }
-
-        public void recuperarLibros()
-        {
-            //Transformar de librodo a libro
-
-        }
-
-        public void recuperarReservas()
-        {
-
-        }
-
-        public void recuperarPrestamos()
-        {
-
-        }
-
-        public void recuperarAutores()
-        {
-
-        }
+        
  
 
     }

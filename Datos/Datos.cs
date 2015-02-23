@@ -18,8 +18,8 @@ namespace Datos
         public Datos()
         {
             //Conexion para mysql con stored procedures
-             //strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
-             strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
+             strcon = "server=umsebastianbd.ddns.net;user id=v8jonatan;database=biblioteca;pwd=v8jonatan";
+             //strcon="server=localhost;user id=v8jonatan;database=biblioteca;pwd=v8jonatan"; 
              con = new MySqlConnection(strcon);
         }
 
@@ -188,7 +188,6 @@ namespace Datos
                 return (int)idAutor.Value;
             }
             return 0;
-           
 
         }
        
@@ -275,7 +274,9 @@ namespace Datos
                 p.FechaInicio = row.Field<DateTime>("fechaInicio");
                 p.FechaVencimiento = row.Field<DateTime>("fechaVencimiento");
                 p.Devolucion = row.Field<bool>("devolucion");
-                p2 = new PrestamoDO(p.Codigo, p.Socio, p.FechaInicio, p.FechaVencimiento, p.Libro);
+                p.Ejemplar = row.Field<int>("id_ejemplar");
+                p.Libro = row.Field<int>("id_libro");
+                p2 = new PrestamoDO(p.Codigo, p.Socio, p.FechaInicio, p.FechaVencimiento,p.Devolucion, p.Ejemplar, p.Libro);
                 prestamos.Add(p2);
             }
             return prestamos;
@@ -309,6 +310,33 @@ namespace Datos
                 libros.Add(l2);
             }
             return libros;
+        }
+
+        public List<EjemplarDO> cargarEjemplares()
+        {
+            openConnection();
+            cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "recuperarEjemplares";
+            DataSet ds = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(ds, "ejemplares");
+            DataTable dt = ds.Tables["ejemplares"];
+            closeConnection();
+
+            EjemplarDO e, e2;
+            e = new EjemplarDO();
+            List<EjemplarDO> ejemplares = new List<EjemplarDO>();
+            foreach (DataRow row in dt.Rows)
+            {
+                e.Numero = row.Field<int>("id_ejemplar");
+                e.Libro = row.Field<int>("id_libro");
+                e.EstadoActual = row.Field<string>("estado_actual");
+                e2 = new EjemplarDO(e.Numero, e.Libro, e.EstadoActual);
+                ejemplares.Add(e2);
+            }
+            return ejemplares;
         }
 
         public int altaLibro(string tit, string gen, string _isbn,int cantEjemplares,int autor,string ed)
@@ -348,6 +376,8 @@ namespace Datos
             }
             return 0;
         }
+
+        
         
         
     }

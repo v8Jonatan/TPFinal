@@ -27,3 +27,5 @@ D:\Personal\GitHubDebug\UI.exe
 D:\Personal\GitHubDebug\UI.pdb
 C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.FrmAutor.resources
 C:\Users\jonatan\Documents\GitHub\TPFinal\UI\obj\Debug\UI.FrmLibros.resources
+D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.FrmAutor.resources
+D:\Personal\Mis documentos\GitHub\TPFinal\UI\obj\Debug\UI.FrmLibros.resources
