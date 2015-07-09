@@ -45,7 +45,7 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(98, 28);
+            this.txtApellido.Location = new System.Drawing.Point(153, 50);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 0;
@@ -53,7 +53,7 @@
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(38, 31);
+            this.lblApellido.Location = new System.Drawing.Point(93, 53);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(44, 13);
             this.lblApellido.TabIndex = 1;
@@ -62,7 +62,7 @@
             // lblNombres
             // 
             this.lblNombres.AutoSize = true;
-            this.lblNombres.Location = new System.Drawing.Point(38, 70);
+            this.lblNombres.Location = new System.Drawing.Point(93, 92);
             this.lblNombres.Name = "lblNombres";
             this.lblNombres.Size = new System.Drawing.Size(49, 13);
             this.lblNombres.TabIndex = 3;
@@ -70,7 +70,7 @@
             // 
             // txtNombres
             // 
-            this.txtNombres.Location = new System.Drawing.Point(98, 67);
+            this.txtNombres.Location = new System.Drawing.Point(153, 89);
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(152, 20);
             this.txtNombres.TabIndex = 2;
@@ -78,7 +78,7 @@
             // lblDni
             // 
             this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(38, 113);
+            this.lblDni.Location = new System.Drawing.Point(93, 135);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(23, 13);
             this.lblDni.TabIndex = 5;
@@ -86,7 +86,7 @@
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(98, 110);
+            this.txtDni.Location = new System.Drawing.Point(153, 132);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(100, 20);
             this.txtDni.TabIndex = 4;
@@ -94,7 +94,7 @@
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(38, 157);
+            this.lblTelefono.Location = new System.Drawing.Point(93, 179);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(49, 13);
             this.lblTelefono.TabIndex = 7;
@@ -102,7 +102,7 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(98, 154);
+            this.txtTelefono.Location = new System.Drawing.Point(153, 176);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(100, 20);
             this.txtTelefono.TabIndex = 6;
@@ -110,7 +110,7 @@
             // lblCorreo
             // 
             this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Location = new System.Drawing.Point(38, 202);
+            this.lblCorreo.Location = new System.Drawing.Point(93, 224);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(38, 13);
             this.lblCorreo.TabIndex = 9;
@@ -118,14 +118,14 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(98, 199);
+            this.txtCorreo.Location = new System.Drawing.Point(153, 221);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(100, 20);
             this.txtCorreo.TabIndex = 8;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(306, 307);
+            this.btnAceptar.Location = new System.Drawing.Point(153, 355);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(92, 23);
             this.btnAceptar.TabIndex = 12;
@@ -137,7 +137,7 @@
             // 
             this.radiobtnComun.AutoSize = true;
             this.radiobtnComun.Checked = true;
-            this.radiobtnComun.Location = new System.Drawing.Point(41, 257);
+            this.radiobtnComun.Location = new System.Drawing.Point(96, 279);
             this.radiobtnComun.Name = "radiobtnComun";
             this.radiobtnComun.Size = new System.Drawing.Size(58, 17);
             this.radiobtnComun.TabIndex = 13;
@@ -148,7 +148,7 @@
             // radiobtnEspecial
             // 
             this.radiobtnEspecial.AutoSize = true;
-            this.radiobtnEspecial.Location = new System.Drawing.Point(165, 257);
+            this.radiobtnEspecial.Location = new System.Drawing.Point(220, 279);
             this.radiobtnEspecial.Name = "radiobtnEspecial";
             this.radiobtnEspecial.Size = new System.Drawing.Size(65, 17);
             this.radiobtnEspecial.TabIndex = 14;
@@ -159,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 348);
+            this.ClientSize = new System.Drawing.Size(401, 427);
             this.Controls.Add(this.radiobtnEspecial);
             this.Controls.Add(this.radiobtnComun);
             this.Controls.Add(this.btnAceptar);

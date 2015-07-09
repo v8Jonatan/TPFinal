@@ -75,9 +75,9 @@ namespace UI
             verReservasToolStripMenuItem.Enabled = true;
             realizarPrestamoToolStripMenuItem.Enabled = true;
             devolverToolStripMenuItem.Enabled = true;
-
             lblNombre.Text = string.Concat(string.Concat(s.Nombres, " "), s.Apellido);
-            //Debería cargar automáticamente los préstamos que tiene esa persona vigentes
+            //Cargar automáticamente los préstamos que tiene esa persona vigentes
+            mostrarPrestamosVigentes(s.Prestamos.FindAll(x => x.Devolucion == false)); 
         }
 
         private void FrmInicio_Load(object sender, EventArgs e)
@@ -159,6 +159,24 @@ namespace UI
             // Metodo para reservar despues mover a la parte web
             int idlibro=3;
           //  biblioteca.reservar(socioActual,idlibro);
+        }
+
+        private void agregarEjemplarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void mostrarPrestamosVigentes(List<Prestamo> prestamos)
+        {
+            //Debe cargar en el dataGridView
+            datagridDatos.DataSource = prestamos;
+            //Por ahí deberíamos filtrar algunas filas que no queramos ver en la tabla desde este metodo
+        }
+
+        private void btnDetalleSocio_Click(object sender, EventArgs e)
+        {
+            FrmVerSocios fr = new FrmVerSocios(socioActual);
+            fr.ShowDialog();
         }
     }
 }

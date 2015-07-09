@@ -185,6 +185,7 @@ namespace RN
             biblioteca.Socios = recuperarSocios();
             biblioteca.Autores = recuperarAutores();
             biblioteca.Libros = recuperarLibros();
+            recuperarEjemplares();
             biblioteca.Reservas = recuperarReservas();
             biblioteca.Prestamos = recuperarPrestamos();
             return biblioteca;
@@ -213,12 +214,12 @@ namespace RN
             List<Autor> lista = new List<Autor>();
             Autor autor;
             Datos.Datos d = new Datos.Datos();
-            //Se encarga de cargar los autores, pero aun no carga la lista de libros
             foreach (AutorDO a in d.cargarAutores())
             {
                 autor = new Autor(a.Codigo,a.Apenom,a.Nacionalidad);
                 lista.Add(autor); 
             }
+            //Carga autores pero todavía no le pongo  los libros
             return lista;
         }
 
@@ -229,7 +230,6 @@ namespace RN
             Autor aux;
             Datos.Datos d = new Datos.Datos();
             //Este foreach se encarga de cargar libros sin ejemplares
-            //Ademas agrega el autor del libro y los libros al autor correspondiente
             foreach (LibroDO l in d.cargarLibros())
             {
                 libro = new Libro(l.Codigo, l.Titulo, l.Genero, l.Isbn, l.Editorial);
@@ -238,18 +238,23 @@ namespace RN
                 aux.Libros.Add(libro);      //Al autor le pongo el libro en su lista
                 lista.Add(libro);           //Lista que contiene todos los libros
             }
+            return lista;
+        }
+
+        public void recuperarEjemplares()
+        {
             //Este foreach se encarga de cargar los ejemplares y el libro correspondiente
             //Asi como tambien agregarle a los libros sus ejemplares
             Ejemplar ej;
+            Datos.Datos d = new Datos.Datos();
             foreach (EjemplarDO ejem in d.cargarEjemplares())
             {
-                libro = lista.Find(x => x.Codigo == ejem.Libro);
+                Libro libro = libros.Find(x => x.Codigo == ejem.Libro);
                 ej = new Ejemplar(ejem.Numero, libro , ejem.EstadoActual);
                 libro.Ejemplares.Add(ej);
             }
-            return lista;
         }
-        
+
         public List<Prestamo> recuperarPrestamos()
         {
             List<Prestamo> lista = new List<Prestamo>();
@@ -300,7 +305,6 @@ namespace RN
                 au.Codigo = d.altaAutor(au.Nacionalidad,au.Apenom);
                 autores.Add(au);
             }
-                  
         }
         
         //Caso de uso : Agregar libro

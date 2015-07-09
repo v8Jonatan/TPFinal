@@ -33,6 +33,7 @@
             this.agregarSocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verReservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prestamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verPrestamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.devolverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +56,6 @@
             this.radiobtnTitulo = new System.Windows.Forms.RadioButton();
             this.btnBusqueda = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.reservarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridDatos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -102,9 +102,16 @@
             // 
             this.verReservasToolStripMenuItem.Enabled = false;
             this.verReservasToolStripMenuItem.Name = "verReservasToolStripMenuItem";
-            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verReservasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.verReservasToolStripMenuItem.Text = "Ver Reservas";
             this.verReservasToolStripMenuItem.Click += new System.EventHandler(this.verReservasToolStripMenuItem_Click);
+            // 
+            // reservarToolStripMenuItem
+            // 
+            this.reservarToolStripMenuItem.Name = "reservarToolStripMenuItem";
+            this.reservarToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.reservarToolStripMenuItem.Text = "Reservar";
+            this.reservarToolStripMenuItem.Click += new System.EventHandler(this.reservarToolStripMenuItem_Click);
             // 
             // prestamoToolStripMenuItem
             // 
@@ -162,6 +169,7 @@
             this.agregarEjemplarToolStripMenuItem.Name = "agregarEjemplarToolStripMenuItem";
             this.agregarEjemplarToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.agregarEjemplarToolStripMenuItem.Text = "Agregar Ejemplar";
+            this.agregarEjemplarToolStripMenuItem.Click += new System.EventHandler(this.agregarEjemplarToolStripMenuItem_Click);
             // 
             // buscarLibrosToolStripMenuItem
             // 
@@ -182,6 +190,7 @@
             // txtDni
             // 
             this.txtDni.Location = new System.Drawing.Point(109, 59);
+            this.txtDni.MaxLength = 10;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(118, 20);
             this.txtDni.TabIndex = 2;
@@ -200,6 +209,7 @@
             // txtNroSocio
             // 
             this.txtNroSocio.Location = new System.Drawing.Point(109, 85);
+            this.txtNroSocio.MaxLength = 10;
             this.txtNroSocio.Name = "txtNroSocio";
             this.txtNroSocio.Size = new System.Drawing.Size(118, 20);
             this.txtNroSocio.TabIndex = 4;
@@ -241,6 +251,7 @@
             this.btnDetalleSocio.Text = "Detalles";
             this.btnDetalleSocio.UseVisualStyleBackColor = true;
             this.btnDetalleSocio.Visible = false;
+            this.btnDetalleSocio.Click += new System.EventHandler(this.btnDetalleSocio_Click);
             // 
             // panel1
             // 
@@ -304,13 +315,6 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(100, 20);
             this.txtBusqueda.TabIndex = 0;
-            // 
-            // reservarToolStripMenuItem
-            // 
-            this.reservarToolStripMenuItem.Name = "reservarToolStripMenuItem";
-            this.reservarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.reservarToolStripMenuItem.Text = "Reservar";
-            this.reservarToolStripMenuItem.Click += new System.EventHandler(this.reservarToolStripMenuItem_Click);
             // 
             // FrmInicio
             // 

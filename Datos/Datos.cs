@@ -90,7 +90,6 @@ namespace Datos
 
         public int altaSocio(string noms, string ape, string c, int tel, int dni, string t)
         {
-            
                 if (openConnection()) 
                 {
                     cmd = new MySqlCommand();
@@ -142,7 +141,6 @@ namespace Datos
             da.Fill(ds, "socios");
             DataTable dt = ds.Tables["socios"];
             closeConnection();
-
 
             SocioDO s, s2;
             s=new SocioDO();

@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmVerSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVerSocios.Designer.cs">
+      <DependentUpon>FrmVerSocios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAutor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSocios.resx">
       <DependentUpon>FrmSocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVerSocios.resx">
+      <DependentUpon>FrmVerSocios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -47,7 +47,7 @@
             // lblEjemplares
             // 
             this.lblEjemplares.AutoSize = true;
-            this.lblEjemplares.Location = new System.Drawing.Point(114, 258);
+            this.lblEjemplares.Location = new System.Drawing.Point(114, 265);
             this.lblEjemplares.Name = "lblEjemplares";
             this.lblEjemplares.Size = new System.Drawing.Size(58, 13);
             this.lblEjemplares.TabIndex = 19;
@@ -55,7 +55,7 @@
             // 
             // txtEjemplares
             // 
-            this.txtEjemplares.Location = new System.Drawing.Point(178, 255);
+            this.txtEjemplares.Location = new System.Drawing.Point(178, 265);
             this.txtEjemplares.Name = "txtEjemplares";
             this.txtEjemplares.Size = new System.Drawing.Size(100, 20);
             this.txtEjemplares.TabIndex = 18;
@@ -63,7 +63,7 @@
             // lblIsbn
             // 
             this.lblIsbn.AutoSize = true;
-            this.lblIsbn.Location = new System.Drawing.Point(118, 194);
+            this.lblIsbn.Location = new System.Drawing.Point(114, 185);
             this.lblIsbn.Name = "lblIsbn";
             this.lblIsbn.Size = new System.Drawing.Size(32, 13);
             this.lblIsbn.TabIndex = 17;
@@ -71,7 +71,7 @@
             // 
             // txtIsbn
             // 
-            this.txtIsbn.Location = new System.Drawing.Point(178, 191);
+            this.txtIsbn.Location = new System.Drawing.Point(178, 185);
             this.txtIsbn.Name = "txtIsbn";
             this.txtIsbn.Size = new System.Drawing.Size(100, 20);
             this.txtIsbn.TabIndex = 16;
@@ -79,7 +79,7 @@
             // lblGenero
             // 
             this.lblGenero.AutoSize = true;
-            this.lblGenero.Location = new System.Drawing.Point(118, 150);
+            this.lblGenero.Location = new System.Drawing.Point(114, 145);
             this.lblGenero.Name = "lblGenero";
             this.lblGenero.Size = new System.Drawing.Size(42, 13);
             this.lblGenero.TabIndex = 15;
@@ -87,7 +87,7 @@
             // 
             // txtGenero
             // 
-            this.txtGenero.Location = new System.Drawing.Point(178, 147);
+            this.txtGenero.Location = new System.Drawing.Point(178, 145);
             this.txtGenero.Name = "txtGenero";
             this.txtGenero.Size = new System.Drawing.Size(100, 20);
             this.txtGenero.TabIndex = 14;
@@ -95,7 +95,7 @@
             // lblAutor
             // 
             this.lblAutor.AutoSize = true;
-            this.lblAutor.Location = new System.Drawing.Point(118, 107);
+            this.lblAutor.Location = new System.Drawing.Point(114, 105);
             this.lblAutor.Name = "lblAutor";
             this.lblAutor.Size = new System.Drawing.Size(32, 13);
             this.lblAutor.TabIndex = 13;
@@ -104,7 +104,7 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Location = new System.Drawing.Point(118, 68);
+            this.lblTitulo.Location = new System.Drawing.Point(114, 65);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(33, 13);
             this.lblTitulo.TabIndex = 11;
@@ -122,7 +122,7 @@
             this.comboBoxAutores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBoxAutores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxAutores.FormattingEnabled = true;
-            this.comboBoxAutores.Location = new System.Drawing.Point(178, 107);
+            this.comboBoxAutores.Location = new System.Drawing.Point(178, 105);
             this.comboBoxAutores.Name = "comboBoxAutores";
             this.comboBoxAutores.Size = new System.Drawing.Size(154, 21);
             this.comboBoxAutores.TabIndex = 20;
@@ -139,7 +139,7 @@
             // 
             // btnAgregarLibro
             // 
-            this.btnAgregarLibro.Location = new System.Drawing.Point(178, 305);
+            this.btnAgregarLibro.Location = new System.Drawing.Point(232, 322);
             this.btnAgregarLibro.Name = "btnAgregarLibro";
             this.btnAgregarLibro.Size = new System.Drawing.Size(100, 23);
             this.btnAgregarLibro.TabIndex = 22;
@@ -150,7 +150,7 @@
             // lblEditorial
             // 
             this.lblEditorial.AutoSize = true;
-            this.lblEditorial.Location = new System.Drawing.Point(118, 224);
+            this.lblEditorial.Location = new System.Drawing.Point(114, 225);
             this.lblEditorial.Name = "lblEditorial";
             this.lblEditorial.Size = new System.Drawing.Size(44, 13);
             this.lblEditorial.TabIndex = 23;
@@ -158,7 +158,7 @@
             // 
             // txtEditorial
             // 
-            this.txtEditorial.Location = new System.Drawing.Point(178, 221);
+            this.txtEditorial.Location = new System.Drawing.Point(178, 225);
             this.txtEditorial.Name = "txtEditorial";
             this.txtEditorial.Size = new System.Drawing.Size(100, 20);
             this.txtEditorial.TabIndex = 24;
